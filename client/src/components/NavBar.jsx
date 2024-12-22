@@ -1,17 +1,18 @@
-import devhub from '../assets/devhub3.png';
+import devhub from "../assets/devhub3.png";
+import { MdBusinessCenter } from "react-icons/md";
 
 const NavBar = () => {
   return (
     <div className="container bg-[#F5F5F5] shadow-xl max-w-full h-[12vh]">
       <div className="flex justify-between items-center h-full px-4 md:px-8">
         {/* Logo and Brand Name */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center ">
-            <img 
-              src={devhub} 
-              alt="DevHubs Logo" 
-              className="h-full w-auto object-contain border rounded-full" 
+            <img
+              src={devhub}
+              alt="DevHubs Logo"
+              className="h-full w-auto object-contain border rounded-full"
             />
           </div>
           {/* Brand Name */}
@@ -25,21 +26,42 @@ const NavBar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">Events</a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">Coding-room</a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">Problems</a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">Career-guidance</a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">Community</a>
+          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+            Events
+          </a>
+          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+            Coding-room
+          </a>
+          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+            Problems
+          </a>
+          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+            Career-guidance
+          </a>
+          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+            Community
+          </a>
         </div>
 
         {/* Login Button */}
-        <div>
-          <button className="bg-[#4C1A76] text-white py-2 px-4 rounded hover:bg-[#F76C21]">
-            Login
-          </button>
+        <div className="flex items-center gap-4">
+          <div>
+            <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full hover:bg-[#F76C21]">
+              Sign in
+            </button>
+          </div>
+          <div className="h-12 border-l border-gray-400"></div>
+          <div>
+            <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
+              For business
+              <div className="text-2xl">
+                <MdBusinessCenter />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
-</div>
+    </div>
   );
 };
 
