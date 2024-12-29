@@ -7,7 +7,7 @@ const UpcomingEvent = () => {
   return (
     <div className="mt-[5vmin] px-[3vmin]">
       {/* Heading */}
-      <div className="mb-[4vmin]">
+      <div className="mb-[4vmin] mt-[5vmin]">
         <h1 className="font-poppins text-[6vmin] uppercase font-extrabold text-[#4C1A76]">
           <span className="text-[#F76C21]">Upcoming</span> Events
         </h1>

@@ -12,7 +12,7 @@ const CardSlider = () => {
     "Empowering Developers to Build, Share, and Grow",
     "Join the DevHub, Code with Passion, Grow with Community",
     "Collaborative Coding for the Modern Developer",
-    "Code, Collaborate, and Thrive in the Developer Community",
+    "Code, Collaborate,Thrive in the Developer Community",
   ];
 
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -82,7 +82,7 @@ const CardSlider = () => {
 
       {/* Typing Effect */}
       <div className="flex justify-center mt-[3vmin] mb-[9vmin]">
-        <h1 className="text-[6.5vmin] font-extrabold font-poppins  uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#fff] via-[#f5a9b8] to-[#fff] text-center">
+        <h1 className="text-[6.2vmin] font-extrabold font-poppins  uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#fff] via-[#f5a9b8] to-[#fff] text-center">
           {typedText}
         </h1>
       </div>
