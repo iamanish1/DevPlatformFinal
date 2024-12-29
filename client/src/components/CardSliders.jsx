@@ -82,7 +82,7 @@ const CardSlider = () => {
 
       {/* Typing Effect */}
       <div className="flex justify-center mt-[3vmin] mb-[9vmin]">
-        <h1 className="text-[6.5vmin] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#fff] via-[#f5a9b8] to-[#fff] text-center">
+        <h1 className="text-[6.5vmin] font-extrabold font-poppins  uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#fff] via-[#f5a9b8] to-[#fff] text-center">
           {typedText}
         </h1>
       </div>
