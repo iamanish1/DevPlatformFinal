@@ -26,11 +26,11 @@ const ProjectShowcase = () => {
           {[...Array(6)].map((_, index) => (
             <SwiperSlide key={index}>
               <div
-                className="h-[40vmin] w-full bg-[#F5F5F5]
+                className="h-[40vmin] w-full bg-white
                 flex items-center justify-center rounded-xl shadow-lg hover:scale-105 transform 
                 transition-transform duration-300"
               >
-                <p className="text-white font-bold text-[3vmin]">
+                <p className="text-black font-bold text-[3vmin]">
                   Event {index + 1}
                 </p>
               </div>

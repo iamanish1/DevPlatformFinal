@@ -66,7 +66,7 @@ const CardSlider = () => {
         {[...Array(6)].map((_, index) => (
           <SwiperSlide key={index}>
             <div
-              className="h-[40vmin] w-full mb-[2vmin] bg-[#F5F5F5] flex items-center justify-center rounded-xl shadow-lg"
+              className="h-[40vmin] w-full mb-[2vmin] bg-white flex items-center justify-center rounded-xl shadow-lg"
               style={{
                 animationName: "slideInOut",
                 animationDuration: "9s",
