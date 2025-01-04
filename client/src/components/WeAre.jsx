@@ -1,3 +1,5 @@
+import video from "../assets/devintro2.mp4";
+
 const WeAre = () => {
   return (
     <>
@@ -52,15 +54,15 @@ const WeAre = () => {
             </p>
           </div>
           <div className="mt-[5vmin] ml-[5vmin] mb-[15vmin] w-[103vmin] flex items-center justify-center rounded-[2vmin]">
-            <iframe
+            <video
               className="w-full h-[70vmin] sm:h-[400px] mb-[0vmin] mr-[4vmin] ml-[4vmin]"
-              src="https://www.youtube.com/embed/a_GJ_Bzk1sk?autoplay=1"
-              title="YouTube video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
+              controls
+              autoPlay
+              preload="auto"
+            >
+              <source src={video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>

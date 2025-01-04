@@ -1,4 +1,4 @@
-import CollabWithUs from "../components/CollabWithUs"
+
 import Footer from "../components/footer"
 import Herosection from "../components/Herosection"
 import HostEventSection from "../components/HostEvent"
@@ -20,7 +20,6 @@ const HomePage = ()=>{
         <Opportunities/>
         <UserTestinomial/>
         <ProjectShowcase/>
-        <CollabWithUs/>
         <Footer/>
         </>
     )
