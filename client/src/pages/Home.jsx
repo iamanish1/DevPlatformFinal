@@ -1,4 +1,5 @@
 
+import EyeCatchSection from "../components/EyeCatchFirst"
 import Footer from "../components/footer"
 import Herosection from "../components/Herosection"
 import HostEventSection from "../components/HostEvent"
@@ -15,6 +16,7 @@ const HomePage = ()=>{
         <NavBar/>
         <Herosection/>
         <WeAre/>
+        <EyeCatchSection/>
         <UpcomingEvent/>
          <HostEventSection/>
         <Opportunities/>
