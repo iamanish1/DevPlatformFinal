@@ -1,25 +1,59 @@
-/* eslint-disable no-unused-vars */
+
 import { useState } from "react";
 import devhub from "../assets/devhub3.png";
 
 const EventSection = () => {
-  const [activeSecti, setActiveSection] = useState(""); // Track active section
+  // State for Dropdowns
+  const [selectedEvent, setSelectedEvent] = useState("Event Type");
+  const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
 
-  const handleScroll = (sectionId) => {
-    setActiveSection(sectionId); // Update the active section state
-    const section = document.getElementById(sectionId); // Get the section by its ID
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" }); // Scroll to the section smoothly
+  const [selectedLocation, setSelectedLocation] = useState("Choose Location");
+  const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
+
+  const eventOptions = [
+    "Tech Event",
+    "Hackathon",
+    "Ideathon",
+    "Networking Event",
+    "College Fest",
+    "Webinar",
+  ];
+
+  const locationOptions = [
+    "Delhi",
+    "Greater Noida",
+    "Haryana",
+    "Gurugram",
+    "Other",
+  ];
+
+  // Dropdown Handlers
+  const toggleDropdown = (type) => {
+    if (type === "event") {
+      setIsEventDropdownOpen(!isEventDropdownOpen);
+      setIsLocationDropdownOpen(false); // Close the other dropdown
+    } else if (type === "location") {
+      setIsLocationDropdownOpen(!isLocationDropdownOpen);
+      setIsEventDropdownOpen(false); // Close the other dropdown
+    }
+  };
+
+  const handleOptionClick = (type, option) => {
+    if (type === "event") {
+      setSelectedEvent(option);
+      setIsEventDropdownOpen(false);
+    } else if (type === "location") {
+      setSelectedLocation(option);
+      setIsLocationDropdownOpen(false);
     }
   };
 
   return (
     <>
+      {/* Header Section */}
       <div className="container bg-[#F5F5F5] shadow-xl max-w-full h-[12vh]">
         <div className="flex justify-between items-center h-full px-4 md:px-8">
-          {/* Logo and Brand Name */}
           <div className="flex items-center gap-2">
-            {/* Logo */}
             <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center">
               <img
                 src={devhub}
@@ -27,69 +61,133 @@ const EventSection = () => {
                 className="h-full w-auto object-contain border rounded-full"
               />
             </div>
-            {/* Brand Name */}
             <h1 className="text-[#4C1A76] text-[3.5vmin] md:text-[4vmin] font-sans font-bold">
-              <span className="text-[#F76C21]">
-                <span className="text-[#F76C21] text-[5vmin]">D</span>ev
-              </span>
+              <span className="text-[#F76C21] text-[5vmin]">D</span>ev
               <span className="text-[#4C1A76] text-[5vmin]">H</span>ubs
             </h1>
           </div>
+          <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full hover:bg-[#F76C21]">
+            Sign in
+          </button>
+        </div>
+      </div>
 
-          {/* Navigation Links */}
-          <ul className="hidden md:flex items-center gap-6">
-            <li onClick={() => handleScroll("fest")} className="cursor-pointer">
-              Fest
-            </li>
-            <li onClick={() => handleScroll("workshop")} className="cursor-pointer">
-              Workshop
-            </li>
-            <li onClick={() => handleScroll("network")} className="cursor-pointer">
-              Networking
-            </li>
-            <li onClick={() => handleScroll("tech")} className="cursor-pointer">
-              Tech
-            </li>
-            <li onClick={() => handleScroll("quiz")} className="cursor-pointer">
-              Quiz
-            </li>
-            <li onClick={() => handleScroll("social")} className="cursor-pointer">
-              Social
-            </li>
-          </ul>
+      {/* Main Section */}
+      <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
+        {/* Filter Section */}
+        <div className="h-[100%] w-[75vmin] bg-white ml-[2vmin]">
+          <h1 className="text-center text-[3vmin] font-bold mt-[3vmin]">
+            <span className="text-[#4C1A76]">Event</span>{" "}
+            <span className="text-[#F76C21]">Filter</span>
+          </h1>
 
-          {/* Login Button */}
-          <div className="flex items-center gap-4">
-            <div>
-              <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full hover:bg-[#F76C21]">
-                Sign in
-              </button>
+          {/* Date Picker */}
+          <div>
+            <label
+              htmlFor="date"
+              className="block text-[2.5vmin] font-medium text-gray-700 ml-[2vmin] mt-[3vmin]"
+            >
+              Select a date:
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="block px-2 py-2 w-[48vmin] text-gray-700 border border-gray-300 rounded-md mt-[1.5vmin] ml-[2vmin]"
+            />
+          </div>
+
+          {/* Event Type Dropdown */}
+          <div className="relative mt-[3vmin]">
+            <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
+              Event:
+            </h1>
+            <div
+              onClick={() => toggleDropdown("event")}
+              className="cursor-pointer bg-white border border-gray-300 w-[48vmin] h-[6.5vmin] mt-[2vmin] ml-[2vmin] text-gray-700 rounded-md px-[1vmin] py-[1.2vmin]"
+            >
+              {selectedEvent}
             </div>
+            {isEventDropdownOpen && (
+              <ul className=" bg-white border border-gray-200 mt-2 w-[48vmin] rounded-lg shadow-lg">
+                {eventOptions.map((option, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleOptionClick("event", option)}
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Location Dropdown */}
+          <div className="relative mt-[3vmin]">
+            <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
+              Location:
+            </h1>
+            <div
+              onClick={() => toggleDropdown("location")}
+              className="cursor-pointer bg-white border border-gray-300 w-[48vmin] h-[6.5vmin] mt-[2vmin] ml-[2vmin] text-gray-700 rounded-md px-[1vmin] py-[1.2vmin]"
+            >
+              {selectedLocation}
+            </div>
+            {isLocationDropdownOpen && (
+              <ul className=" bg-white border border-gray-200 mt-2 w-[48vmin] rounded-lg shadow-lg">
+                {locationOptions.map((option, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleOptionClick("location", option)}
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div> 
+          <div>
+            <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full
+             hover:bg-[#F76C21] w-[48vmin] mt-[6vmin] ml-[2vmin] mb-[3vmin]">
+              Apply Filters
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Sections */}
-      <div className="flex flex-col gap-y-[15vmin] px-4 md:px-8">
-        <div id="fest" className="py-10">
-          <h1 className="text-xl font-bold">This is my Fest section</h1>
-        </div>
-        <div id="workshop" className="py-10">
-          <h1 className="text-xl font-bold">This is my Workshop section</h1>
-        </div>
-        <div id="network" className="py-10">
-          <h1 className="text-xl font-bold">This is my Networking section</h1>
-        </div>
-        <div id="tech" className="py-10">
-          <h1 className="text-xl font-bold">This is my Tech section</h1>
-        </div>
-        <div id="quiz" className="py-10">
-          <h1 className="text-xl font-bold">This is my Quiz section</h1>
-        </div>
-        <div id="social" className="py-10">
-          <h1 className="text-xl font-bold">This is my Social section</h1>
-        </div>
+        {/* Event Sections */}
+        <div className="w-full">
+  <div>
+    <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase font ">
+      Events
+    </h1>
+    {/* Event Cards */}
+    <div className="flex flex-wrap justify-start gap-4 mt-4">
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
       </div>
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
+      </div>
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
+      </div>
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
+      </div>
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
+      </div>
+      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+        {/* Card Content */}
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+ </div>
     </>
   );
 };
