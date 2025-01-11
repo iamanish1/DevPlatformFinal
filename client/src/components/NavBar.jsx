@@ -1,5 +1,6 @@
 import devhub from "../assets/devhub3.png";
 import { MdBusinessCenter } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -8,7 +9,7 @@ const NavBar = () => {
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-2">
           {/* Logo */}
-          <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center ">
+          <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center">
             <img
               src={devhub}
               alt="DevHubs Logo"
@@ -26,21 +27,36 @@ const NavBar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+          <Link
+            to="Events"
+            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
+          >
             Events
-          </a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
-            Coding-room
-          </a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
-            Problems
-          </a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
-            Career-guidance
-          </a>
-          <a href="#" className="text-sm md:text-base hover:text-[#4C1A76]">
+          </Link>
+          <Link
+            to="codingRoom"
+            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
+          >
+            Coding Room
+          </Link>
+          <Link
+            to="Practice"
+            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
+          >
+            Practice
+          </Link>
+          <Link
+            to="Carrier"
+            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
+          >
+            Career Guidance
+          </Link>
+          <Link
+            to="Community"
+            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
+          >
             Community
-          </a>
+          </Link>
         </div>
 
         {/* Login Button */}
