@@ -104,7 +104,7 @@ const CodingRoomSection = () => {
           {/* Location Dropdown */}
           <div className="relative mt-[3vmin]">
             <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
-              Location:
+              Domain : 
             </h1>
             <div
               onClick={() => toggleDropdown("location")}
