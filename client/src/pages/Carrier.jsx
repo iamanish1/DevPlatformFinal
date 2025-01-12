@@ -1,8 +1,11 @@
+import NavBar2 from "../components/NavBar2"
+
 const CarrierSection = ()=>{
+    const currentPage = "carrier"
     return (
         <>
         <div>
-            this is my carier page 
+           <NavBar2 currentPage={currentPage}/>
         </div>
         </>
     )

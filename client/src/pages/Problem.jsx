@@ -1,8 +1,11 @@
+import NavBar2 from "../components/NavBar2";
+
 const ProblemSection = ()=>{
+    const currentPage = "problem";
     return (
         <>
         <div>
-            this is my problem page
+            <NavBar2 currentPage={currentPage}/>
         </div>
         </>
     )

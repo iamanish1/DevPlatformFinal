@@ -1,8 +1,8 @@
-
 import { useState } from "react";
-import devhub from "../assets/devhub3.png";
+import NavBar2 from "../components/NavBar2";
 
 const EventSection = () => {
+  const currentPage = "event"; 
   // State for Dropdowns
   const [selectedEvent, setSelectedEvent] = useState("Event Type");
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
@@ -50,27 +50,8 @@ const EventSection = () => {
 
   return (
     <>
-      {/* Header Section */}
-      <div className="container bg-[#F5F5F5] shadow-xl max-w-full h-[12vh]">
-        <div className="flex justify-between items-center h-full px-4 md:px-8">
-          <div className="flex items-center gap-2">
-            <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center">
-              <img
-                src={devhub}
-                alt="DevHubs Logo"
-                className="h-full w-auto object-contain border rounded-full"
-              />
-            </div>
-            <h1 className="text-[#4C1A76] text-[3.5vmin] md:text-[4vmin] font-sans font-bold">
-              <span className="text-[#F76C21] text-[5vmin]">D</span>ev
-              <span className="text-[#4C1A76] text-[5vmin]">H</span>ubs
-            </h1>
-          </div>
-          <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full hover:bg-[#F76C21]">
-            Sign in
-          </button>
-        </div>
-      </div>
+      {/* NavBar2 */}
+      <NavBar2  currentPage={currentPage} />
 
       {/* Main Section */}
       <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
@@ -93,7 +74,8 @@ const EventSection = () => {
               type="date"
               id="date"
               name="date"
-              className="block px-2 py-2 w-[48vmin] text-gray-700 border border-gray-300 rounded-md mt-[1.5vmin] ml-[2vmin]"
+              className="block px-2 py-2 w-[48vmin] text-gray-700 border border-gray-300 rounded-md mt-[1.5vmin] ml-[2vmin]
+              focus : outline-none"
             />
           </div>
 
@@ -147,10 +129,12 @@ const EventSection = () => {
                 ))}
               </ul>
             )}
-          </div> 
+          </div>
           <div>
-            <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full
-             hover:bg-[#F76C21] w-[48vmin] mt-[6vmin] ml-[2vmin] mb-[3vmin]">
+            <button
+              className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full
+             hover:bg-[#F76C21] w-[48vmin] mt-[6vmin] ml-[2vmin] mb-[3vmin]"
+            >
               Apply Filters
             </button>
           </div>
@@ -158,36 +142,34 @@ const EventSection = () => {
 
         {/* Event Sections */}
         <div className="w-full">
-  <div>
-    <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase font ">
-      Events
-    </h1>
-    {/* Event Cards */}
-    <div className="flex flex-wrap justify-start gap-4 mt-4">
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
+          <div>
+            <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase font ">
+              Events
+            </h1>
+            {/* Event Cards */}
+            <div className="flex flex-wrap justify-start gap-4 mt-4">
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                {/* Card Content */}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
-      </div>
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
-      </div>
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
-      </div>
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
-      </div>
-      <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-        {/* Card Content */}
-      </div>
-    </div>
-    
-  </div>
-</div>
-
- </div>
     </>
   );
 };

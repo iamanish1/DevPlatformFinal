@@ -1,8 +1,11 @@
+import NavBar2 from "../components/NavBar2";
+
 const CommunitySection = ()=>{
+    const currentPage = "community"
     return (
         <>
         <div>
-            this is my Community Section 
+          <NavBar2 currentPage={currentPage}/>
         </div>
         </>
     )
