@@ -7,6 +7,7 @@ import ProblemSection from "../pages/Problem.jsx";
 import HomePage from "../pages/Home.jsx";
 import App from "./app.jsx";
 import ProfilePage from "../pages/Profile.jsx";
+import CreateAccount from "../pages/CreateAccount.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         path : "Profile",
         element: <ProfilePage/> 
 
+      }, 
+      {
+        path : "createAccount", 
+        element : <CreateAccount/>
       }
     ],
   },

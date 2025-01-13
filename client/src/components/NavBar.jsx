@@ -63,7 +63,7 @@ const NavBar = () => {
         <div className="flex items-center gap-4">
           <div>
             <button className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full hover:bg-[#F76C21]">
-              Sign in
+             <Link to="/createAccount"> Sign in </Link>
             </button>
           </div>
           <div className="h-12 border-l border-gray-400"></div>
