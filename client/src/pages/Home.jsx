@@ -1,5 +1,5 @@
 import EyeCatchSection from "../components/EyeCatchFirst";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import Herosection from "../components/Herosection";
 import HostEventSection from "../components/HostEvent";
 import NavBar from "../components/NavBar";

@@ -6,6 +6,7 @@ import CommunitySection from "../pages/Community.jsx";
 import ProblemSection from "../pages/Problem.jsx";
 import HomePage from "../pages/Home.jsx";
 import App from "./app.jsx";
+import ProfilePage from "../pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         path: "Practice",
         element: <ProblemSection />,
       },
+      {
+        path : "Profile",
+        element: <ProfilePage/> 
+
+      }
     ],
   },
 ]);

@@ -1,5 +1,6 @@
 import NavBar2 from "../components/NavBar2"
 import { useState } from "react";
+import Footer from "../components/Footer";
 
 const CarrierSection = ()=>{
 const currentPage = "carrier"; 
@@ -207,6 +208,7 @@ const currentPage = "carrier";
           </div>
         </div>
       </div>
+      <Footer/>
     </>
     
 )}

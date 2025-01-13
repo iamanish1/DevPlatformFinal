@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavBar2 from "../components/NavBar2";
+import Footer from "../components/Footer";
 
 const EventSection = () => {
   const currentPage = "event"; 
@@ -170,6 +171,7 @@ const EventSection = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

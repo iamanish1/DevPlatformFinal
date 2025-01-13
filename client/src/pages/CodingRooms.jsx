@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavBar2 from "../components/NavBar2";
+import Footer from "../components/Footer";
 
 const CodingRoomSection = () => {
   const currentPage = "coding-room"; 
@@ -166,6 +167,7 @@ const CodingRoomSection = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

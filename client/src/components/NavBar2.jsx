@@ -1,22 +1,46 @@
 import devhub from "../assets/devhub3.png";
 import { GoSearch } from "react-icons/go";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const NavBar2 = ({ currentPage }) => {
   // Define text for different pages
+  const [isProfileDropDownOpen, setIsProfileDropDownOpen] = useState(false);
+
+  // Profile options
+  const profileOptions = [
+    { name: "My Profile", route: "/Profile" },
+    { name: "Coding Rooms", route: "/codingRoom" },
+    { name: "Events", route: "/Events" },
+    { name: "Problems", route: "/Practice" },
+    { name: "Carrier", route: "/Carrier" },
+    { name: "Community", route: "/Community" },
+    { name: "Logout", route: "/" },
+  ];
+
+  // Toggle the profile dropdown visibility
+  const toggleDropdown = () => {
+    setIsProfileDropDownOpen(!isProfileDropDownOpen);
+  };
+
+  // Handle click on profile option
+  const handleOptionClick = (option) => {
+    console.log(option); // Handle profile option click (you can add navigation or other functionality here)
+    setIsProfileDropDownOpen(false); // Close dropdown after option is clicked
+  };
   const buttonText =
-  currentPage === "coding-room"
-    ? "Create Coding Room"
-    : currentPage === "community"
-    ? "Create Community"
-    : currentPage === "carrier"
-    ? "Host Mentorship"
-    : currentPage === "problem"
-    ? "Host Problems"
-    : currentPage === "event"
-    ? "List Your Event"
-    : "List Your Event";
+    currentPage === "coding-room"
+      ? "Create Coding Room"
+      : currentPage === "community"
+      ? "Create Community"
+      : currentPage === "carrier"
+      ? "Host Mentorship"
+      : currentPage === "problem"
+      ? "Host Problems"
+      : currentPage === "event"
+      ? "List Your Event"
+      : "List Your Event";
 
   const placeholderText =
     currentPage === "coding-room"
@@ -36,16 +60,20 @@ const NavBar2 = ({ currentPage }) => {
         <div className="flex justify-between items-center h-full px-4 md:px-8">
           <div className="flex items-center justify-center gap-2">
             <div className="h-[8.2vh] w-[8.2vh] flex justify-center items-center">
-              <img
-                src={devhub}
-                alt="DevHubs Logo"
-                className="h-full w-auto object-contain border rounded-full"
-              />
+              <Link to="/">
+                <img
+                  src={devhub}
+                  alt="DevHubs Logo"
+                  className="h-full w-auto object-contain border rounded-full"
+                />
+              </Link>
             </div>
-            <h1 className="text-[#4C1A76] text-[3.5vmin] md:text-[4vmin] font-sans font-bold">
-              <span className="text-[#F76C21] text-[5vmin]">D</span>ev
-              <span className="text-[#4C1A76] text-[5vmin]">H</span>ubs
-            </h1>
+            <Link to="/">
+              <h1 className="text-[#4C1A76] text-[3.5vmin] md:text-[4vmin] font-sans font-bold">
+                <span className="text-[#F76C21] text-[5vmin]">D</span>ev
+                <span className="text-[#4C1A76] text-[5vmin]">H</span>ubs
+              </h1>
+            </Link>
           </div>
           <div className="flex items-center">
             {/* Search Bar */}
@@ -63,7 +91,30 @@ const NavBar2 = ({ currentPage }) => {
             </button>
           </div>
           <div className="flex">
-            <button className="bg-[#4C1A76] text-white h-[8vmin] w-[8vmin] border rounded-full hover:bg-[#F76C21]"></button>
+            <button
+              className="bg-[#4C1A76] text-white h-[8vmin] w-[8vmin] border rounded-full hover:bg-[#F76C21]
+            "
+              onClick={toggleDropdown}
+            ></button>
+
+            {/* Profile Dropdown Menu */}
+            {isProfileDropDownOpen && (
+              <div className="absolute top-[11.5vmin] right-[16.5vmin] bg-white border rounded-md shadow-lg w-[15rem] z-10">
+                <ul>
+                  {profileOptions.map((option, index) => (
+                    <Link to={option.route} key={index}>
+                      <li
+                        className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                        onClick={() => handleOptionClick(option)}
+                      >
+                        {option.name}
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="w-[0.5vmin] bg-gray-300 h-[7vmin] mr-[1vmin] ml-[1vmin]"></div>
             <div className="flex items-center">
               <button
@@ -78,17 +129,21 @@ const NavBar2 = ({ currentPage }) => {
       </div>
     </>
   );
-  
 };
 
-  // PropTypes validation for the currentPage prop to ensure it's one of the allowed values
+// PropTypes validation for the currentPage prop to ensure it's one of the allowed values
 NavBar2.propTypes = {
-    currentPage: PropTypes.oneOf(["coding-room", "community", "event", "carrier", "problem"]).isRequired,
-  };
-  
-  NavBar2.defaultProps = {
-    currentPage: "event",
-  };
-  
+  currentPage: PropTypes.oneOf([
+    "coding-room",
+    "community",
+    "event",
+    "carrier",
+    "problem",
+  ]).isRequired,
+};
+
+NavBar2.defaultProps = {
+  currentPage: "event",
+};
 
 export default NavBar2;

@@ -57,8 +57,7 @@ const WeAre = () => {
             <video
               className="w-full h-[70vmin] sm:h-[400px] mb-[0vmin] mr-[4vmin] ml-[4vmin]"
               controls
-              autoPlay
-              preload="auto"
+
             >
               <source src={video} type="video/mp4" />
               Your browser does not support the video tag.
