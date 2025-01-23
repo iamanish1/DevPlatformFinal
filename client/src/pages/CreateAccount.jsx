@@ -1,4 +1,5 @@
 import handshake from "..//assets/bg2.jpg"
+import { Link } from "react-router-dom";
 const CreateAccount = ()=>{
     
     return(
@@ -39,7 +40,7 @@ const CreateAccount = ()=>{
                             <button>Create Account</button>
                         </div>
                         <div className="flex justify-center items-center mt-[2vmin]">
-                            <p>Already have an account? <a href="" className="text-[#F76C21]">Login</a></p>
+                            <p>Already have an account? <Link to="/LoginAccount" className="text-[#F76C21]">Login</Link></p>
                         </div>
                     </div>
                    
