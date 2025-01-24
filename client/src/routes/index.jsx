@@ -9,50 +9,60 @@ import App from "./app.jsx";
 import ProfilePage from "../pages/Profile.jsx";
 import CreateAccount from "../pages/CreateAccount.jsx";
 import AlreadyAccount from "../pages/AlreadyAccout.jsx";
-
+import ProtectedRoute from "../components/ProtectedRoute.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     children: [
-        {
-          path : "",
-          element: <HomePage />, // No "/" at the start, it will render HomePage when no path is provided in the URL.
-
-        },
       {
-        path: "codingRoom", // No "/" at the start
-        element: <CodingRoomSection />,
+        path: "",
+        element: <HomePage />, // HomePage is public
+      },
+      {
+        path: "codingRoom",
+        element: (
+          <ProtectedRoute component={CodingRoomSection} /> // Protected route
+        ),
       },
       {
         path: "Events",
-        element: <EventSection />,
+        element: (
+          <ProtectedRoute component={EventSection} /> // Protected route
+        ),
       },
       {
         path: "Carrier",
-        element: <CarrierSection />,
+        element: (
+          <ProtectedRoute component={CarrierSection} /> // Protected route
+        ),
       },
       {
         path: "Community",
-        element: <CommunitySection />,
+        element: (
+          <ProtectedRoute component={CommunitySection} /> // Protected route
+        ),
       },
       {
         path: "Practice",
-        element: <ProblemSection />,
+        element: (
+          <ProtectedRoute component={ProblemSection} /> // Protected route
+        ),
       },
       {
-        path : "Profile",
-        element: <ProfilePage/> 
-
-      }, 
-      {
-        path : "createAccount", 
-        element : <CreateAccount/>
+        path: "Profile",
+        element: (
+          <ProtectedRoute component={ProfilePage} /> // Protected route
+        ),
       },
       {
-        path : "LoginAccount", 
-        element : <AlreadyAccount/>
-      }
+        path: "createAccount",
+        element: <CreateAccount />, // Public route
+      },
+      {
+        path: "LoginAccount",
+        element: <AlreadyAccount />, // Public route
+      },
     ],
   },
 ]);

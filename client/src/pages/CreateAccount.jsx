@@ -33,9 +33,11 @@ const CreateAccount = ()=>{
                 username: formData.username,
                 email: formData.email,
                 password: formData.password,
+              },{
+                withCredentials : true,  // This sends cookies with the request
               });
         
-              console.log(response.data);
+              console.log(response.data); 
               alert("Account created successfully!");
         
               // Redirect to the login page

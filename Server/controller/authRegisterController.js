@@ -4,13 +4,13 @@ import AuthUser from "../Models/UserModel.js";
 
 const authentication = async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const { username, email, password } = req.body;
     console.log(username, email, password);
 
     if (!username || !email || !password) {
-        return res.status(400).json({ message: 'All fields are required' });
-      }
+      return res.status(400).json({ message: "All fields are required" });
+    }
 
     // Check if the email is already registered
     const existingUser = await AuthUser.findOne({ email });
@@ -44,6 +44,14 @@ const authentication = async (req, res) => {
       process.env.JWT_SECRET || "your_jwt_secret", // Secret key to sign the token
       { expiresIn: "30d" } // Token expiration (optional)
     );
+
+    // Set the token in an HTTP-only cookie
+    res.cookie("authToken", token, {
+      httpOnly: true, // Prevent JavaScript access
+      secure:   false , // Use HTTPS in production
+      sameSite: "strict", // Prevent CSRF
+      maxAge: 30 * 24 * 60 * 60 * 1000, // Cookie expiry (30 days)
+    });
 
     // Return success response along with the token
     res.status(201).json({
