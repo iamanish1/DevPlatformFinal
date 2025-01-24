@@ -10,9 +10,10 @@ import ProfilePage from "../pages/Profile";
 import CreateAccount from "../pages/CreateAccount";
 import AlreadyAccount from "../pages/AlreadyAccout";
 
-const createRouter = (isAuthenticated) =>
 
+const createRouter = (isAuthenticated) =>
   createBrowserRouter([
+    // Your routes logic here
     {
       path: "/",
       element: <HomePage />, // Public route for the home page

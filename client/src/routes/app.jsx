@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
-import router from "./router";
+import createRouter from "./router"; // Import the router creation function
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      // Example: Validate token
+      // Example: Validate token (you can implement a token validation API call here)
       setIsAuthenticated(true);
     } else {
       setIsAuthenticated(false);
@@ -21,7 +21,11 @@ function App() {
     return <div>Loading...</div>;
   }
 
-  return <RouterProvider router={router(isAuthenticated)} />;
+  
+  const router = createRouter(isAuthenticated); // Dynamically create the router
+  console.log("Router instance:", router);
+  
+  return <RouterProvider router={router} />;
 }
 
 export default App;
