@@ -1,23 +1,25 @@
-import Jwt from "jsonwebtoken" ; 
 
-//  Middelware to verify token  :
-const protect =  async(req , res , next ) =>{
-    const token = req.cookies.authToken ; // get token from cookie 
-    console.log("JWT Token:", token);
-    if (!token) {
-        return res.status(401).json({ message: 'Not authorized, token is required' });
-    }
-    try{
-        // verify token 
-        const decoded = Jwt.verify(token, process.env.JWT_SECRET);
-        console.log(token) ; 
-        req.user = decoded.user ; // add user to request
-        next(); // move to next middleware or controller
+import jwt from "jsonwebtoken";
 
-    }
-    catch(error){
-        return res.status(401).json({ message: 'Token is invalid' });
-    }
-}
+const verifyToken = (req, res, next) => {
+  // Get the token from the cookie or Authorization header
+  const cookieToken = req.cookies?.authToken; // Token from cookies
+  const headerToken = req.headers.authorization?.split(" ")[1]; // Token from Authorization header
 
-export default protect; 
+  const token = cookieToken || headerToken; // Prioritize cookie token
+
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized: No token provided" });
+  }
+
+  // Verify the token
+  jwt.verify(token, "your_jwt_secret_key", (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid token" });
+    }
+    req.user = user; // Store user info in request object
+    next();
+  });
+};
+
+export default verifyToken;

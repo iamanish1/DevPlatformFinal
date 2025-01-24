@@ -37,7 +37,7 @@ const AlreadyAccount = ()=>{
             alert("Login successful")
 
             localStorage.setItem("authToken", response.data.token);
-            navigate("/Events") // Navigate to the dashboard after successful login
+            navigate("/Events");// Navigate to the dashboard after successful login
             
         } catch (error) {
             if (error.response && error.response.data) {
