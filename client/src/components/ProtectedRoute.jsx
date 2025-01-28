@@ -1,50 +1,24 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
-import PropTypes from "prop-types"; // Import PropTypes
+import { Navigate, Outlet } from "react-router-dom";
+import PropTypes from "prop-types";
+import { useAuth } from "../Context/AuthContext";
 
-const ProtectedRoute = ({ component: Component }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    // Check if the user is authenticated by sending a request to a protected route
-    const checkAuth = async () => {
-      const token = localStorage.getItem("authToken"); // Get token from localStorage
-      console.log("Checking", token);
-      if (!token) {
-        setIsAuthenticated(false);
-        return;
-      }
 
-      try {
-        await axios.post(
-          "http://localhost:8000/api/authLoginUser",
-          {}, // Empty body
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Token included in headers
-            },
-            withCredentials: true, // Allow cookies if required
-          }
-        );
-        setIsAuthenticated(true);
-      } catch (error) {
-        setIsAuthenticated(false);
-        console.log(error);
-      }
-    };
-    checkAuth();
-  }, []);
-
+const ProtectedRoute = ({ redirectPath = "/LoginAccount", children }) => {
+  const {isAuthenticated} = useAuth(); 
+  console.log("isAuthenticated:", isAuthenticated);
   if (!isAuthenticated) {
-    return <Navigate to="/LoginAccount" />; // Redirect to login if not authenticated
+    return <Navigate to={redirectPath} replace />;
   }
 
-  return <Component />; // If authenticated, render the protected component
+  return children ? children : <Outlet />;
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.elementType.isRequired, // Validate that component is a valid React component
+  isAuthenticated: PropTypes.bool.isRequired,// `isAuthenticated` is required and must be a boolean
+  redirectPath: PropTypes.string, // `redirectPath` is optional and must be a string
+  children: PropTypes.node, // `children` is optional and can be any renderable React node
 };
+
 
 export default ProtectedRoute;

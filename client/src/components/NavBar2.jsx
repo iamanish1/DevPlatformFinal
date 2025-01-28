@@ -3,9 +3,12 @@ import { GoSearch } from "react-icons/go";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import  useAuth  from "../Context/AuthContext";
 
 const NavBar2 = ({ currentPage }) => {
   // Define text for different pages
+  const { setIsAuthenticated } = useAuth(); 
   const [isProfileDropDownOpen, setIsProfileDropDownOpen] = useState(false);
 
   // Profile options
@@ -18,6 +21,34 @@ const NavBar2 = ({ currentPage }) => {
     { name: "Community", route: "/Community" },
     { name: "Logout", route: "/" },
   ];
+  const handleLogout = async () => {
+    try {
+      // Send logout request to the backend
+      const response = await axios.post(
+        "http://localhost:8000/api/logout",
+        {},
+        {
+          withCredentials: true, // Ensures cookies are sent with the request
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`, // Include the token
+          },
+        }
+      );
+  
+      // Clear token from localStorage
+      localStorage.removeItem("authToken");
+      setIsAuthenticated(false);
+      console.log("User Logged Out Successfully:", response.data.message);
+  
+      // Redirect user to login or home page (if needed)
+      window.location.href = "/"; // Adjust the redirect path based on your app's route
+    } catch (error) {
+      console.error("Error during logout:", error.response?.data?.message || error.message);
+      // Optionally show an error message to the user
+      alert("Failed to logout. Please try again.");
+    }
+  };
+  
 
   // Toggle the profile dropdown visibility
   const toggleDropdown = () => {
@@ -26,8 +57,15 @@ const NavBar2 = ({ currentPage }) => {
 
   // Handle click on profile option
   const handleOptionClick = (option) => {
-    console.log(option); // Handle profile option click (you can add navigation or other functionality here)
-    setIsProfileDropDownOpen(false); // Close dropdown after option is clicked
+    if(option.name === "Logout"){
+      handleLogout();
+
+    }
+    else {
+      console.log(option); // Handle profile option click (you can add navigation or other functionality here)
+      setIsProfileDropDownOpen(false); // Close dropdown after option is clicked
+    }
+   
   };
   const buttonText =
     currentPage === "coding-room"
