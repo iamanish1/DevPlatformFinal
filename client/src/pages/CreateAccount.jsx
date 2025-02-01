@@ -38,7 +38,7 @@ const CreateAccount = ()=>{
               });
         
               console.log(response.data); 
-              alert("Account created successfully!");
+              
         
               // Redirect to the login page
               navigate("/LoginAccount");

@@ -37,7 +37,6 @@ const AlreadyAccount = ()=>{
             }) ; 
             
             console.log(response.data);
-            alert("Login successful")
             setIsAuthenticated(true); // Set the authentication state to true
 
             localStorage.setItem("authToken", response.data.token);
