@@ -4,10 +4,13 @@ import { useAuth } from "../Context/AuthContext";
 
 
 
+
 const ProtectedRoute = ({ redirectPath = "/LoginAccount", children }) => {
-  const {isAuthenticated} = useAuth(); 
+  const {isAuthenticated} =  useAuth() ; 
+  
   console.log("isAuthenticated:", isAuthenticated);
   if (!isAuthenticated) {
+    console.log("user is not authenticated")
     return <Navigate to={redirectPath} replace />;
   }
 

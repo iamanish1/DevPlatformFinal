@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import  useAuth  from "../Context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 
 const NavBar2 = ({ currentPage }) => {
   // Define text for different pages
@@ -37,8 +37,14 @@ const NavBar2 = ({ currentPage }) => {
   
       // Clear token from localStorage
       localStorage.removeItem("authToken");
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("isAuthenticated");
+      sessionStorage.clear();
+
       setIsAuthenticated(false);
       console.log("User Logged Out Successfully:", response.data.message);
+      document.cookie = "authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
   
       // Redirect user to login or home page (if needed)
       window.location.href = "/"; // Adjust the redirect path based on your app's route

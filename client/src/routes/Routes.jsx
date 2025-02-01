@@ -10,11 +10,11 @@ import CodingRoomSection from "../pages/CodingRooms";
 import CommunitySection from "../pages/Community";
 import  ProfilePage  from "../pages/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
-import  AuthContext  from "../Context/AuthContext";
+import { AuthContext}  from "../Context/AuthContext";
 import { useContext } from "react";
 
 const AppRoutes = () => {
-    const isAuthenticated = useContext(AuthContext); ; 
+    const isAuthenticated = useContext(AuthContext); 
   return (
     <Router>
       <Routes>

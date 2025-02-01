@@ -1,29 +1,40 @@
-// AuthContext.jsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const AuthContext = createContext();
- const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+const AuthContext = createContext(null);
+
+const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(()=>{
+    return localStorage.getItem("isAuthenticated") === "true";
+  });
+
+
+  useEffect(() => {
+    // Check if there's a valid token in localStorage to persist login state
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsAuthenticated(true);
+      localStorage.setItem("isAuthenticated", isAuthenticated);
+    }
+  }, [isAuthenticated]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-      {children} {/* Ensure children are rendered */}
+      {children}
     </AuthContext.Provider>
   );
 };
 
-  const useAuth = () => useContext(AuthContext);
-
-export default AuthProvider; 
-
-useAuth.propTypes = { // `children` is required and must be a React node
-    isAuthenticated: PropTypes.bool.isRequired, // `isAuthenticated` is required and must be a boolean
-    setIsAuthenticated: PropTypes.func.isRequired, // `setIsAuthenticated` is required and must be a function
-  };
-AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired, // `children` is required and must be a React node
-  
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
 
-export { AuthContext, AuthProvider, useAuth };  // Export AuthContext, AuthProvider, and useAuth hooks.
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired, // Ensure children are rendered inside AuthProvider
+};
+
+export {AuthProvider, useAuth, AuthContext }; 

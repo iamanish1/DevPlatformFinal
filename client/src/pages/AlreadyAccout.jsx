@@ -2,8 +2,10 @@ import { useState } from "react";
 import handshake from "..//assets/bg2.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios" ; 
+import { useAuth } from "../Context/AuthContext";
 
 const AlreadyAccount = ()=>{
+    const { setIsAuthenticated } = useAuth();
     const [formData , setFormData] = useState({
         email: "",
         password:"",
@@ -33,10 +35,13 @@ const AlreadyAccount = ()=>{
             }, {
                 withCredentials: true,
             }) ; 
+            
             console.log(response.data);
             alert("Login successful")
+            setIsAuthenticated(true); // Set the authentication state to true
 
             localStorage.setItem("authToken", response.data.token);
+
             navigate("/Events");// Navigate to the dashboard after successful login
             
         } catch (error) {
