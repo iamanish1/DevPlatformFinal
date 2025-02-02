@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import NavBar2 from "../components/NavBar2";
 import Footer from "../components/Footer";
@@ -28,6 +29,43 @@ const EventSection = () => {
     "Gurugram",
     "Other",
   ];
+
+  const eventCards = {
+
+    "Events": [
+      { id: 1, title: "Events", description: "Events" },
+      { id: 2, title: "Events", description: "Events" },
+    ],
+
+    "Bug Hunt Arena": [
+      { id: 1, title: "Bug Hunt Card 1", description: "Card for Bug Hunt Arena 1" },
+      { id: 2, title: "Bug Hunt Card 2", description: "Card for Bug Hunt Arena 2" },
+    ],
+   
+    "Hackathon": [
+      { id: 1, title: "Hackathon Card 1", description: "Card for Hackathon 1" },
+      { id: 2, title: "Hackathon Card 2", description: "Card for Hackathon 2" },
+    ],
+    "Debugging Duel": [
+      { id: 1, title: "Debugging Duel", description: "Card for Debugging Duel" },
+      { id: 2, title: "Debugging Duel", description: "Card for Debugging Duel" },
+    ],
+    "Code-battel": [
+      { id: 1, title: "Code-battel", description: "Card for Code-battel" },
+      { id: 2, title: "Code-battel", description: "Card for Code-battel" },
+    ],
+    "speed-Guidance": [
+      { id: 1, title: "speed-Guidance", description: "Card for speed-Guidance" },
+      { id: 2, title: "speed-Guidance", description: "Card for speed-Guidance" },
+    ],
+    "Quiz": [
+      { id: 1, title: "Quiz", description: "Card for Quiz" },
+      { id: 2, title: "Quiz", description: "Card For Quiz" },
+    ],
+
+    // Add more events here as needed
+  };
+
 
   // Dropdown Handlers
   const toggleDropdown = (type) => {
@@ -213,24 +251,85 @@ const EventSection = () => {
             </h1>
             {/* Event Cards */}
             <div className="flex flex-wrap justify-start gap-4 mt-4">
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
-              <div className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
-                {/* Card Content */}
-              </div>
+
+            {selectHeading === "Events" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/Eventarena" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl">Event</h2>
+                    <p className="mt-2">Normal Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
+            {selectHeading === "Bug Hunt Arena" && (
+              <>
+                {/* Bug Hunt Arena Card */}
+                <Link to="/participant/bughunt" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl">Bug Hunt Arena</h2>
+                    <p className="mt-2">Test projects and find bugs. Compete with others for rewards!</p>
+                  </div>
+                </Link>
+              </>
+            )}
+             {selectHeading === "Hackathon" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/Hackthon" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl"> Hackthon Event</h2>
+                    <p className="mt-2">Hackthon Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
+             {selectHeading === "Debugging Duel" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/debuggingduel" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl"> Debugging Duel Event</h2>
+                    <p className="mt-2">Debugging Duel Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
+            {selectHeading === "Code-battel" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/codebattel" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl"> code battel Duel Event</h2>
+                    <p className="mt-2"> code battel  Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
+            {/* speed-Guidance */}
+            {selectHeading === "speed-Guidance" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/speedguide" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl"> speed-Guidance Duel Event</h2>
+                    <p className="mt-2"> speed-Guidance Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
+              {selectHeading === "Quiz" && (
+              <>
+              {/* Event card */}
+              <Link to="/participant/Quiz" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                  <div className="p-4">
+                    <h2 className="font-bold text-xl"> Quiz Duel Event</h2>
+                    <p className="mt-2"> Quiz Event Card</p>
+                  </div>
+                </Link>
+              </>
+            )}
             </div>
           </div>
         </div>

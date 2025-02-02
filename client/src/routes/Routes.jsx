@@ -9,6 +9,7 @@ import CarrierSection from "../pages/Carrier";
 import CodingRoomSection from "../pages/CodingRooms";
 import CommunitySection from "../pages/Community";
 import  ProfilePage  from "../pages/Profile";
+import BugHuntArena from "../pages/BugHuntArena";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { AuthContext}  from "../Context/AuthContext";
 import { useContext } from "react";
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/Carrier" element={<CarrierSection/>} />
         <Route path="/Practice" element={<ProblemSection/>} />
         <Route path="/Profile" element={<ProfilePage/>} />
+        <Route path="/BugHuntArena" element={<BugHuntArena/>} />
         </Route>
         <Route path="/" element={<HomePage/>} />
         <Route path="/CreateAccount" element={<CreateAccount/>} />
