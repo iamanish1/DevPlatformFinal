@@ -1,16 +1,17 @@
 import { useState } from "react";
 import NavBar2 from "../components/NavBar2";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const EventSection = () => {
-  const currentPage = "event"; 
+  const currentPage = "event";
   // State for Dropdowns
   const [selectedEvent, setSelectedEvent] = useState("Event Type");
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
 
   const [selectedLocation, setSelectedLocation] = useState("Choose Location");
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
-
+  const [selectHeading , setSelectheading] = useState("Events")
   const eventOptions = [
     "Tech Event",
     "Hackathon",
@@ -47,12 +48,75 @@ const EventSection = () => {
       setSelectedLocation(option);
       setIsLocationDropdownOpen(false);
     }
+
   };
+
+  const handelMenueItemClick = (heading) => { 
+    setSelectheading(heading)
+  }
 
   return (
     <>
       {/* NavBar2 */}
-      <NavBar2  currentPage={currentPage} />
+      <NavBar2 currentPage={currentPage} />
+      {/* Sub-menue bar for Event section  */}
+      <div className="w-full h-[10vmin] bg-[#4C1A76]  flex justify-evenly items-center shadow-md">
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+        shadow-md  hover:bg-[#F76C21]"
+         onClick={()=> handelMenueItemClick("Bug Hunt Arena")}
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            Bug Hunt Arena
+          </Link>
+        </div>
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+          shadow-md   hover:bg-[#F76C21]"
+          onClick={()=> handelMenueItemClick("Hackathon")}
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            Hackathon
+          </Link>
+        </div>
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+          shadow-md   hover:bg-[#F76C21]"
+          onClick={()=> handelMenueItemClick("Debugging Duel")}
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            Debugging Duel
+          </Link>
+        </div>
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+          shadow-md   hover:bg-[#F76C21]"
+          onClick={()=> handelMenueItemClick("Code-battel")}
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            Code-battel
+          </Link>
+        </div>
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+           shadow-md   hover:bg-[#F76C21]"
+           onClick={()=> handelMenueItemClick("speed-Guidance")}
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            speed-Guidance
+          </Link>
+        </div>
+        <div
+          className="bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin]
+           shadow-md   hover:bg-[#F76C21]"
+           onClick={()=> handelMenueItemClick("Quiz")}
+           
+        >
+          <Link to="" className="text-[2vmin] font-poppins uppercase">
+            Quiz
+          </Link>
+        </div>
+      </div>
 
       {/* Main Section */}
       <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
@@ -145,7 +209,7 @@ const EventSection = () => {
         <div className="w-full">
           <div>
             <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase font ">
-              Events
+              {selectHeading}
             </h1>
             {/* Event Cards */}
             <div className="flex flex-wrap justify-start gap-4 mt-4">
@@ -171,7 +235,7 @@ const EventSection = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
