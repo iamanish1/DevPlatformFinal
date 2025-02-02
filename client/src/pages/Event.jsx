@@ -159,7 +159,7 @@ const EventSection = () => {
       {/* Main Section */}
       <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
         {/* Filter Section */}
-        <div className="h-[100%] w-[75vmin] bg-white ml-[2vmin]">
+        <div className="h-screen w-[75vmin] bg-white ml-[2vmin]">
           <h1 className="text-center text-[3vmin] font-bold mt-[3vmin]">
             <span className="text-[#4C1A76]">Event</span>{" "}
             <span className="text-[#F76C21]">Filter</span>
