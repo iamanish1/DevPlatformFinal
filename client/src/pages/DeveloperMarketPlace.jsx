@@ -3,7 +3,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 
 const DeveloperMarketPlace = ()=>{
-const currentPage = "problem"; 
+const currentPage = "DeveloperMarket"; 
   // State for Dropdowns
   const [selectedEvent, setSelectedEvent] = useState("Problem Type");
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
@@ -182,7 +182,7 @@ const currentPage = "problem";
         <div className="w-full">
           <div>
             <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase">
-              Problem in Tech 
+              Welcome to Developer Market 
             </h1>
             {/* Event Cards */}
             <div className="flex flex-wrap justify-start gap-4 mt-4">

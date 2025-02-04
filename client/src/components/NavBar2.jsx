@@ -14,10 +14,9 @@ const NavBar2 = ({ currentPage }) => {
   // Profile options
   const profileOptions = [
     { name: "My Profile", route: "/Profile" },
-    { name: "Coding Rooms", route: "/codingRoom" },
     { name: "Events", route: "/Events" },
-    { name: "Problems", route: "/Practice" },
-    { name: "Carrier", route: "/Carrier" },
+    { name: "Mentorship", route: "/mentorship" },
+    { name: "Developer Market", route: "/DeveloperMarket" },
     { name: "Community", route: "/Community" },
     { name: "Logout", route: "/" },
   ];
@@ -74,9 +73,7 @@ const NavBar2 = ({ currentPage }) => {
    
   };
   const buttonText =
-    currentPage === "coding-room"
-      ? "Create Coding Room"
-      : currentPage === "community"
+      currentPage === "community"
       ? "Create Community"
       : currentPage === "carrier"
       ? "Host Mentorship"
@@ -87,12 +84,10 @@ const NavBar2 = ({ currentPage }) => {
       : "List Your Event";
 
   const placeholderText =
-    currentPage === "coding-room"
-      ? "Search for a coding Room"
-      : currentPage === "community"
+      currentPage === "community"
       ? "Search in Community"
-      : currentPage === "carrier"
-      ? "Search Mentorship for you "
+      : currentPage === "DeveloperMarket"
+      ? "Search your product "
       : currentPage === "problem"
       ? "Search Trending Problems"
       : "Search Your Event";
@@ -181,8 +176,7 @@ NavBar2.propTypes = {
     "coding-room",
     "community",
     "event",
-    "carrier",
-    "problem",
+    "DeveloperMarket"
   ]).isRequired,
 };
 
