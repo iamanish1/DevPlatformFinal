@@ -2,6 +2,10 @@ import Footer from "../components/Footer";
 import NavBar2 from "../components/NavBar2";
 import { FaCalendar } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
+import { MdGroups2 } from "react-icons/md";
+import { IoPeople } from "react-icons/io5";
+
+
 
 const BugHuntArena = () => {
   return (
@@ -10,7 +14,7 @@ const BugHuntArena = () => {
       <NavBar2 />
 
       {/* Banner - Event Registration Page */}
-      <div className="h-[60vmin] w-full bg-white mt-[5vmin]">hii</div>
+      <div className="h-[60vmin] w-full bg-white mt-[5vmin]"></div>
 
       {/* Main Content Section (Fixed Page Height) */}
       <div className="h-screen w-full bg-[#F5F5F5] flex justify-between gap-[3vmin] px-[6vmin] overflow-hidden">
@@ -182,82 +186,89 @@ const BugHuntArena = () => {
                 bug reports and code solution.
               </div>
               <div className="mt-[2vmin]">
-                <p className="font-bold">Rules :</p>  
+                <p className="font-bold">Rules :</p>
                 <div className="flex flex-col gap-[0.5vmin] mt-[2vmin]">
                   <div className="flex flex-row">
-                  <GoDotFill className="mt-[0.5vmin]" />
-                    No Automated Testing Tools Manual testing only.</div>
+                    <GoDotFill className="mt-[0.5vmin]" />
+                    No Automated Testing Tools Manual testing only.
+                  </div>
                   <div className="flex flex-row">
-                  <GoDotFill className="mt-[0.5vmin]" />
+                    <GoDotFill className="mt-[0.5vmin]" />
                     No Fake Bug Reports Submitting false reports will lead to a
                     penalty.
                   </div>
                   <div className="flex flex-row">
-                  <GoDotFill className="mt-[0.5vmin]" />
+                    <GoDotFill className="mt-[0.5vmin]" />
                     No Code Manipulation Testers cannot intentionally modify
                     code to create artificial bugs.
                   </div>
                   <div className="flex flex-row">
-                  <GoDotFill className="mt-[0.5vmin]" />
+                    <GoDotFill className="mt-[0.5vmin]" />
                     No Collusion Testers and developers cannot secretly
                     collaborate to generate false bug-fix
                   </div>
                   {/* Prize box */}
                   <div className="flex flex-col gap-[2vmin]">
                     <div className="font-bold font-poppins text-[4vmin] mt-[2vmin]">
-                      Prize : 
+                      Prize :
                     </div>
                     <div className="font-sans text-[2.5vmin] uppercase font-semibold">
-                       First Poistion : 300
+                      First Poistion : 300
                     </div>
-                    <div  className="font-sans text-[2.5vmin] uppercase font-semibold">
-                       Second poistion : 200
+                    <div className="font-sans text-[2.5vmin] uppercase font-semibold">
+                      Second poistion : 200
                     </div>
-                    <div  className="font-sans text-[2.5vmin] uppercase font-semibold">
-                       Third Poision : 400
+                    <div className="font-sans text-[2.5vmin] uppercase font-semibold">
+                      Third Poision : 400
                     </div>
                   </div>
                   {/* Crieria Judging criteria  */}
                   <div className="mt-[2vmin]">
-                    Result will Be decleared on these Criteria : 
+                    Result will Be decleared on these Criteria :
                     <div className="flex flex-row gap-[1vmin] mt-[2vmin]">
-                    <GoDotFill className="mt-[0.5vmin]" />
+                      <GoDotFill className="mt-[0.5vmin]" />
                       Based on your Code Redability .
                     </div>
                     <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
+                      <GoDotFill className="mt-[0.5vmin]" />
                       Based on the number of bugs you solved .
                     </div>
                     <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
+                      <GoDotFill className="mt-[0.5vmin]" />
                       Based on the complexity of your Code .
                     </div>
                     <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
+                      <GoDotFill className="mt-[0.5vmin]" />
                       Based on the time you took to report and fix the bugs .
                     </div>
                   </div>
                   <div>
                     <div className="mt-[2vmin]">
                       <h1 className="text-[4vmin] font-poppins uppercase font-bold">
-                        Sumbit Your Review About The Event : 
+                        Sumbit Your Review About The Event :
                       </h1>
                     </div>
-                    <div  className="flex flex-row mt-[3vmin] mb-[5vmin]">
-                    <div className="flex items-center mr-[2vmin]">
-                        <button className="bg-[#4C1A76] h-[7vmin] w-[20vmin] rounded-[4vmin]
-                        text-white font-poppins" 
-                        >Sumbit</button>
+                    <div className="flex flex-row mt-[3vmin] mb-[5vmin]">
+                      <div className="flex items-center mr-[2vmin]">
+                        <button
+                          className="bg-[#4C1A76] h-[7vmin] w-[20vmin] rounded-[4vmin]
+                        text-white font-poppins"
+                        >
+                          Sumbit
+                        </button>
                       </div>
                       <div>
-                      <form action="">
-                        <input type="text" name="" id="" 
-                        placeholder="Enter your review"
-                        className="h-[6.5vmin] w-[90vmin] rounded-[1vmin]  bg-[#F5F5F5]
-                        focus:outline-none focus:ring-0 px-[2vmin] text-[2.5vmin] font-sans border border-gray-100"/>
-                      </form>
+                        <form action="">
+                          <input
+                            type="text"
+                            name=""
+                            id=""
+                            placeholder="Enter your review"
+                            className="h-[6.5vmin] w-[90vmin] rounded-[1vmin]  bg-[#F5F5F5]
+                        focus:outline-none focus:ring-0 px-[2vmin] text-[2.5vmin] font-sans border border-gray-100"
+                          />
+                        </form>
                       </div>
-                     
                     </div>
                   </div>
                 </div>
@@ -268,11 +279,38 @@ const BugHuntArena = () => {
 
         {/* Right Section */}
         <div className="flex flex-col gap-[4vmin]">
-          <div className="h-[40vmin] w-[50vmin] bg-white mt-[4vmin] ml-[0.5vmin]">
-            Event Register Section
+          <div className="h-[60vmin] w-[50vmin] bg-white mt-[4vmin] ml-[0.5vmin] rounded-[2.5vmin]">
+            <div className="flex justify-center">
+              <h1 className="text-[3.5vmin] uppercase font-poppins font-semibold mt-[2vmin]">Bug Hunt Arena</h1>
+            </div>
+            <div className="flex flex-row mt-[3vmin]">
+              <div className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
+              rounded-[2vmin] ml-[2vmin]">
+              <MdGroups2 className="text-[4vmin]" />
+              </div>
+              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[1vmin]">No of Participant :</h1>
+            </div>
+            <div className="flex flex-row mt-[3vmin]">
+              <div className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
+              rounded-[2vmin] ml-[2vmin] mt-[2vmin]">
+              <IoPeople className="text-[4vmin]" />
+              </div>
+              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[2vmin]">Team size :</h1>
+            </div>
+            <div className="flex flex-row mt-[3vmin]">
+              <div  className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
+              rounded-[2vmin] ml-[2vmin] mt-[2vmin]">
+              <FaCalendar className="text-[4vmin]"/>
+              </div>
+              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[2vmin]">Date & Time :</h1>
+            </div>
+            <div className="flex  justify-center items-center mt-[5vmin]">
+              <button className="w-[45vmin] h-[6.5vmin] bg-[#4C1A76] rounded-[4vmin]
+              font-poppins font-semibold uppercase text-white text-[2.5vmin]">Register</button>
+            </div>
           </div>
           <div className="h-[30vmin] w-[50vmin] bg-white mrl-[0.5vmin]">
-            hii
+            upcoming events
           </div>
         </div>
       </div>
