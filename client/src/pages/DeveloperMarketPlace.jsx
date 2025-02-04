@@ -1,29 +1,37 @@
+import NavBar2 from "../components/NavBar2"
 import { useState } from "react";
-import NavBar2 from "../components/NavBar2";
 import Footer from "../components/Footer";
 
-const CodingRoomSection = () => {
-  const currentPage = "coding-room"; 
+const DeveloperMarketPlace = ()=>{
+const currentPage = "problem"; 
   // State for Dropdowns
-  const [selectedEvent, setSelectedEvent] = useState("Room Type");
+  const [selectedEvent, setSelectedEvent] = useState("Problem Type");
   const [isEventDropdownOpen, setIsEventDropdownOpen] = useState(false);
 
-  const [selectedLocation, setSelectedLocation] = useState(" choose Domain");
+  const [selectedLocation, setSelectedLocation] = useState(" choose Language");
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
 
+  const [ selectedPrice , setSelectedPrice] = useState("Domain") ; 
+  const [isPriceDropdownOpen, setIsPricedropDownOpen] = useState(false)
   const eventOptions = [
-    "Public Rooms",
-    "Private Rooms",
-    "Protected Rooms",
+    "DSA Problems",
+    "Coding Problems",
+    "Open Source Problems",
+     "Project Problems"
   ];
 
   const locationOptions = [
-    "Web development",
-    "Ai/Ml",
-    "Android development",
-    "Other",
+    "Python",
+    "Java",
+    "C++",
+    "Javascript",
   ];
-
+  const priceOptions = [
+    "AI/ML",
+    "Web Developement",
+    "Android Development",
+    "other",
+  ] ;
   // Dropdown Handlers
   const toggleDropdown = (type) => {
     if (type === "event") {
@@ -32,9 +40,12 @@ const CodingRoomSection = () => {
     } else if (type === "location") {
       setIsLocationDropdownOpen(!isLocationDropdownOpen);
       setIsEventDropdownOpen(false); // Close the other dropdown
+    } else if (type === "price") {
+      setIsPricedropDownOpen(!isPriceDropdownOpen);
+      setIsLocationDropdownOpen(false); // Close the other dropdown
     }
   };
-
+  
   const handleOptionClick = (type, option) => {
     if (type === "event") {
       setSelectedEvent(option);
@@ -42,8 +53,12 @@ const CodingRoomSection = () => {
     } else if (type === "location") {
       setSelectedLocation(option);
       setIsLocationDropdownOpen(false);
+    } else if (type === "price") {
+      setSelectedPrice(option);
+      setIsPricedropDownOpen(false);
     }
   };
+  
 
   return (
     <>
@@ -55,7 +70,7 @@ const CodingRoomSection = () => {
         {/* Filter Section */}
         <div className="h-[100%] w-[75vmin] bg-white ml-[2vmin]">
           <h1 className="text-center text-[3vmin] font-bold mt-[3vmin]">
-            <span className="text-[#4C1A76]">Room</span> 
+            <span className="text-[#4C1A76]">Problem</span> 
             <span className="text-[#F76C21]">Filter</span>
           </h1>
 
@@ -79,7 +94,7 @@ const CodingRoomSection = () => {
           {/* Event Type Dropdown */}
           <div className="relative mt-[3vmin]">
             <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
-              My Rooms :
+              Type : 
             </h1>
             <div
               onClick={() => toggleDropdown("event")}
@@ -105,7 +120,7 @@ const CodingRoomSection = () => {
           {/* Location Dropdown */}
           <div className="relative mt-[3vmin]">
             <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
-              Domain : 
+                Coding Language : 
             </h1>
             <div
               onClick={() => toggleDropdown("location")}
@@ -127,6 +142,32 @@ const CodingRoomSection = () => {
               </ul>
             )}
           </div>
+          {/* Price Dropdown */}
+          <div className="relative mt-[3vmin]">
+  <h1 className="text-[2.5vmin] font-medium text-gray-700 ml-[2vmin]">
+    Domain : 
+  </h1>
+  <div
+    onClick={() => toggleDropdown("price")}
+    className="cursor-pointer bg-white border border-gray-300 w-[48vmin] h-[6.5vmin] mt-[2vmin] ml-[2vmin] text-gray-700 rounded-md px-[1vmin] py-[1.2vmin]"
+  >
+    {selectedPrice}
+  </div>
+  {isPriceDropdownOpen && (
+    <ul className="bg-white border border-gray-200 mt-2 w-[48vmin] rounded-lg shadow-lg">
+      {priceOptions.map((option, index) => (
+        <li
+          key={index}
+          onClick={() => handleOptionClick("price", option)}
+          className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+        >
+          {option}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
           <div>
             <button
               className="bg-[#4C1A76] text-white py-2 px-4 border rounded-full
@@ -141,26 +182,26 @@ const CodingRoomSection = () => {
         <div className="w-full">
           <div>
             <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase">
-              Coding Rooms 
+              Problem in Tech 
             </h1>
             {/* Event Cards */}
             <div className="flex flex-wrap justify-start gap-4 mt-4">
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
-              <div className="flex-shrink-0 w-[75vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <div className="flex-shrink-0 w-full h-[50vmin] bg-white rounded-lg shadow-md">
                 {/* Card Content */}
               </div>
             </div>
@@ -169,7 +210,6 @@ const CodingRoomSection = () => {
       </div>
       <Footer/>
     </>
-  );
-};
-
-export default CodingRoomSection;
+    
+)}
+export default DeveloperMarketPlace  ; 

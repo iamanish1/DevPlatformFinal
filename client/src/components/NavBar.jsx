@@ -34,22 +34,16 @@ const NavBar = () => {
             Events
           </Link>
           <Link
-            to="codingRoom"
+            to="/mentorship"
             className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
           >
-            Coding Room
+            Mentorship
           </Link>
           <Link
-            to="Practice"
+            to="/DeveloperMarket"
             className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
           >
-            Practice
-          </Link>
-          <Link
-            to="Carrier"
-            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
-          >
-            Career Guidance
+            Developer-Market
           </Link>
           <Link
             to="Community"
