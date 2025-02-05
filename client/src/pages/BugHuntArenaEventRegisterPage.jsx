@@ -4,6 +4,7 @@ import { FaCalendar } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { MdGroups2 } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 
 
@@ -305,8 +306,11 @@ const BugHuntArena = () => {
               <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[2vmin]">Date & Time :</h1>
             </div>
             <div className="flex  justify-center items-center mt-[5vmin]">
-              <button className="w-[45vmin] h-[6.5vmin] bg-[#4C1A76] rounded-[4vmin]
+             <Link to="/participate">
+             <button className="w-[45vmin] h-[6.5vmin] bg-[#4C1A76] rounded-[4vmin]
               font-poppins font-semibold uppercase text-white text-[2.5vmin]">Register</button>
+             </Link>
+            
             </div>
           </div>
           <div className="h-[30vmin] w-[50vmin] bg-white mrl-[0.5vmin]">

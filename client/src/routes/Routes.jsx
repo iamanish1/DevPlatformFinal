@@ -6,7 +6,7 @@ import LoginAccount from "../pages/AlreadyAccout";
 import AlreadyAccount from "../pages/AlreadyAccout";
 import CommunitySection from "../pages/Community";
 import  ProfilePage  from "../pages/Profile";
-import BugHuntArena from "../pages/BugHuntArena";
+import BugHuntArena from "../pages/BugHuntArenaEventRegisterPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { AuthContext}  from "../Context/AuthContext";
 import { useContext } from "react";
@@ -18,6 +18,7 @@ import SpeedGuidnace from "../pages/SpeedGuidnace";
 import QuizPage from "../pages/QuizPage";
 import DeveloperMarketPlace from "../pages/DeveloperMarketPlace";
 import MentorshipPage from "../pages/Mentorship";
+import FinalRegistrationPage from "../pages/SubEventRegistrationPage";
 
 const AppRoutes = () => {
     const isAuthenticated = useContext(AuthContext); 
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         <Route path="participant/speedguide" element={<SpeedGuidnace/>}/>
         <Route path="participant/Quiz" element={<QuizPage/>} />
         <Route path="/mentorship" element={<MentorshipPage/>} />
+        <Route path="/participate" element={<FinalRegistrationPage/>} />
 
         </Route>
         <Route path="/" element={<HomePage/>} />
