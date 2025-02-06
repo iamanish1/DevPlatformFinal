@@ -9,8 +9,8 @@ const QuizSchema = new mongoose.Schema({
             answer: { type: String, required: true } // Added answer field
         },
     ],
-    startTime: { type: Date, required: true },
-    endTime: { type: Date, required: true },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
 });
 
 const Quiz = mongoose.model('Quiz', QuizSchema);

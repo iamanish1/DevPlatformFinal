@@ -19,7 +19,7 @@ const EventSchema = new mongoose.Schema({
   },
   eventDescription: {
     type: String,
-    required: true,
+   
   },
   hostedBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -44,6 +44,13 @@ const EventSchema = new mongoose.Schema({
     required: true,
     refPath: "eventType",
   },
+  numberofParticipant : {
+    type : Number,
+    required : false,
+    default : 0,
+    min : 0,
+    max : 10000,  // Adjusted the maximum value to 10,000 participants
+  }
 });
 
 const Event = mongoose.model("Event", EventSchema);

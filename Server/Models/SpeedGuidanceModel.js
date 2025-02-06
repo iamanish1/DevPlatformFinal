@@ -6,7 +6,7 @@ const SpeedGuidnaceSchema = new mongoose.Schema({
     mentorshipDomain: { type: String, required: true },
     mentorshipTitle: { type: String, required: true },
     mentorshipDescription: { type: String, required: true },
-    mentorshipActiveTime: { type: Date, required: true },
+    mentorshipActiveTime: { type: String, required: true },
 });
 
 const SpeedGudiance = mongoose.model("SpeedGudiance", SpeedGuidnaceSchema); 

@@ -6,31 +6,43 @@ const HackathonSchema = new mongoose.Schema({
     enum: ["offline", "online"],
     required: true,
   },
-  theme: {
+  hackthontheme: {
     type: String,  // Corrected here
     required: true,
   },
-  description: {
+  hackthondescription: {
     type: String,  // Corrected here
     required: true,
   },
-  banner: {
+  hackthonbanner: {
     type: String,  // Corrected here
     required: true,
   },
-  hostedby: {
+  hostedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "AuthUser",
     required: true,
   },
-  collegeName: {
+  hackthoncollegeName: {
     type: String,  // Corrected here
     required: true,
   },
-  location: {
+  hackthonlocation: {
     type: String,  // Corrected here
     required: true,
   },
+  hackthonprize : {
+    type: Number,
+    required: true,
+    validate: {
+      validator: Number.isInteger,  // Ensures that the value is an integer
+      message: '{VALUE} is not an integer value!',
+    }, //
+  },
+  hackthonrules : {
+    type : String,
+    required : true , //
+  }
 });
 
 const Hackathon = mongoose.model("Hackathon", HackathonSchema);

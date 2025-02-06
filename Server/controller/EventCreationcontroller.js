@@ -59,13 +59,33 @@ const EventCreation = async (req, res, Model, eventType) => {
     // Step 4: Create event in the general event collection
     const event = new Event({
       eventTitle: req.body.eventTitle,
-      eventType,
+      eventType : req.body.eventType,
       hostedBy: req.body.hostedBy,
-      startDate,
-      endDate,
+      startDate : req.body.startDate,
+      endDate : req.body.endDate,
       referenceId: specificEvent._id,
       eventDescription: req.body.eventDescription,
       refrenceId: specificEvent._id,
+      category : req.body.category,
+      mentorshipPersonName : req.body.mentorshipPersonName,
+      mentorshipDomain : req.body.mentorshipDomain,
+      mentorshipTitle : req.body.mentorshipTitle,
+      mentorshipDescription : req.body.mentorshipDescription,
+      mentorshipActiveTime : req.body.mentorshipActiveTime,
+      problemCoding : req.body.problemCoding, 
+      problemDescription : req.body.problemDescription,
+      problem : req.body.problem, 
+      description : req.body.description, 
+      buggyCodeFile : req.body.buggyCodeFile,
+      HakthonType : req.body.HakthonType,
+      hackthondescription : req.body.hackthondescription,
+      hackthonlocation : req.body.hackthonlocation,
+      hackthonbanner : req.body.hackthonbanner,
+      hackthoncollegename : req.body.hackthoncollegename,
+      hackthonprize : req.body.hackthonprize,
+      hackthonrules : req.body.hackthonrules,
+      numberofParticipant : req.body.numberofParticipant , 
+
     });
 
     await event.save();
