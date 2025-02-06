@@ -5,10 +5,26 @@ import { GoDotFill } from "react-icons/go";
 import { MdGroups2 } from "react-icons/md";
 import { IoPeople } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+
 
 
 
 const BugHuntArena = () => {
+  const detailsRef = useRef(null);
+  const processRef = useRef(null);
+  const rulesRef = useRef(null);
+  const prizeRef = useRef(null);
+  const criteriaRef = useRef(null);
+  const reviewsRef = useRef(null);
+
+  const handleScrollTo = (ref) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+
   return (
     <>
       {/* Nav Bar */}
@@ -65,37 +81,43 @@ const BugHuntArena = () => {
           >
             <div
               className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                    font-sans text-[2.3vmin] uppercase font-semibold"
+                    font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+                    onClick={() => handleScrollTo(detailsRef)}
             >
               Details
             </div>
             <div
               className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold"
+                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+              onClick={() => handleScrollTo(processRef)}
             >
               Proccess
             </div>
             <div
               className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold"
+                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+                    onClick={() => handleScrollTo(rulesRef)}
             >
               Rules
             </div>
             <div
               className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold"
+                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+                    onClick={() => handleScrollTo(prizeRef)}
             >
               Prize
             </div>
             <div
               className="h-[7vmin] w-[20vmin] flex justify-center items-center
-              font-sans text-[2.3vmin] uppercase font-semibold"
+              font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+              onClick={() => handleScrollTo(criteriaRef)}
             >
               Criteria
             </div>
             <div
               className="h-[7vmin] w-[20vmin] flex justify-center items-center
-              font-sans text-[2.3vmin] uppercase font-semibold"
+              font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
+              onClick={() => handleScrollTo(reviewsRef)}
             >
               Reviews
             </div>
@@ -118,7 +140,7 @@ const BugHuntArena = () => {
                   ?
                 </h1>
               </div>
-              <div className=" font-poppins text-[2.5vmin] mt-[2vmin]">
+              <div className=" font-poppins text-[2.5vmin] mt-[2vmin]" ref={detailsRef}>
                 <p>
                   Bug Hunt Arena is an event-driven bug bounty competition,
                   where developers submit projects for testing, and testers
@@ -165,7 +187,7 @@ const BugHuntArena = () => {
                   </div>
                 </div>
               </div>
-              <div>
+              <div ref={processRef}>
                 <h1 className="text-[2.5vmin] font-bold font-poppins uppercase mt-[2vmin] mb-[2vmin]">
                   how it works ?
                 </h1>
@@ -186,7 +208,7 @@ const BugHuntArena = () => {
                 bug . You have to participate in the event by submitting your
                 bug reports and code solution.
               </div>
-              <div className="mt-[2vmin]">
+              <div className="mt-[2vmin]" ref={rulesRef}>
                 <p className="font-bold">Rules :</p>
                 <div className="flex flex-col gap-[0.5vmin] mt-[2vmin]">
                   <div className="flex flex-row">
@@ -209,7 +231,7 @@ const BugHuntArena = () => {
                     collaborate to generate false bug-fix
                   </div>
                   {/* Prize box */}
-                  <div className="flex flex-col gap-[2vmin]">
+                  <div className="flex flex-col gap-[2vmin]" ref={prizeRef}>
                     <div className="font-bold font-poppins text-[4vmin] mt-[2vmin]">
                       Prize :
                     </div>
@@ -224,7 +246,7 @@ const BugHuntArena = () => {
                     </div>
                   </div>
                   {/* Crieria Judging criteria  */}
-                  <div className="mt-[2vmin]">
+                  <div className="mt-[2vmin]" ref={criteriaRef}>
                     Result will Be decleared on these Criteria :
                     <div className="flex flex-row gap-[1vmin] mt-[2vmin]">
                       <GoDotFill className="mt-[0.5vmin]" />
@@ -244,7 +266,7 @@ const BugHuntArena = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="mt-[2vmin]">
+                    <div className="mt-[2vmin]" ref={reviewsRef}>
                       <h1 className="text-[4vmin] font-poppins uppercase font-bold">
                         Sumbit Your Review About The Event :
                       </h1>
