@@ -1,38 +1,38 @@
 import mongoose from "mongoose";
 
-const HackthonSchema = new mongoose.Schema({
+const HackathonSchema = new mongoose.Schema({
   HackthonType: {
-    type: string,
+    type: String,  // Corrected here
     enum: ["offline", "online"],
     required: true,
   },
-  theme : {
-    type: String,
+  theme: {
+    type: String,  // Corrected here
     required: true,
   },
-  description : {
-    type: String,
+  description: {
+    type: String,  // Corrected here
     required: true,
   },
-  banner : {
-    type: String,
+  banner: {
+    type: String,  // Corrected here
     required: true,
   },
-  hostedby : {
+  hostedby: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "AuthUser",
     required: true,
   },
-  collegeName : {
-    type: String,
+  collegeName: {
+    type: String,  // Corrected here
     required: true,
   },
-  location : {
-    type: String,
+  location: {
+    type: String,  // Corrected here
     required: true,
   },
 });
 
-const Hackthon = mongoose.model("Hackthon", HackthonSchema);
+const Hackathon = mongoose.model("Hackathon", HackathonSchema);
 
-export default Hackthon;
+export default Hackathon;

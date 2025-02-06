@@ -21,31 +21,31 @@ const EventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  hostedBy : 
-  {
-    type : mongoose.Schema.Types.ObjectId, ref : "User" , 
-    required : true ,
-  }, 
-  startDate : {
-    type : Date,
-    required : true,
+  hostedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "AuthUser",
+    required: true,
   },
-  endDate : {
-    type : Date,
-    required : true,
+  startDate: {
+    type: Date,
+    required: true,
   },
-  cretedAt : {
-    type : Date,
-    default : Date.now,
-    index : true ,
+  endDate: {
+    type: Date,
+    required: true,
   },
-  refrenceId : {
-  type : mongoose.Schema.Types.ObjectId,
-  required : true,
-  refPath : "eventType",
-  }
+  createdAt: {  // Fixed the typo here
+    type: Date,
+    default: Date.now,
+    index: true,
+  },
+  refrenceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    refPath: "eventType",
+  },
 });
 
 const Event = mongoose.model("Event", EventSchema);
 
-export default Event; 
+export default Event;

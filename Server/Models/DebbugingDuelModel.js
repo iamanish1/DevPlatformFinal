@@ -9,6 +9,6 @@ const DebbugingDuelShema = new mongoose.Schema(
     }
 )
 
-const DebuggingDuel = mongoose.Model("DebuggingDuel", DebbugingDuelShema)
+const DebuggingDuel = mongoose.model("DebuggingDuel", DebbugingDuelShema); 
 
-export default DebuggingDuel;  // Exporting the schema for use in other parts of the application.  (e.g., routes, controllers, etc.)
+ export default DebuggingDuel ; 
