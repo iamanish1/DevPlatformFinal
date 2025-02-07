@@ -25,7 +25,8 @@ const EventSection = () => {
   ];
 
   // Function to convert menu item to API-friendly format
-  const formatEventType = (heading) => heading.toLowerCase().replace(/\s+/g, "_");
+  const formatEventType = (heading) =>
+    heading.toLowerCase().replace(/\s+/g, "_");
 
   // Fetch events whenever selectedHeading changes
   useEffect(() => {
@@ -79,7 +80,6 @@ const EventSection = () => {
             onClick={() => setSelectedHeading(item)}
           >
             <span className="text-[2vmin] font-poppins uppercase">{item}</span>
-            {console.log(item)}
           </div>
         ))}
       </div>
@@ -88,26 +88,33 @@ const EventSection = () => {
       <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
         {/* Event Section */}
         <div className="w-full">
-          <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase">{selectedHeading}</h1>
+          <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase">
+            {selectedHeading}
+          </h1>
 
           {/* Loading and Error Handling */}
-          {loading && <p className="text-center text-gray-600">Loading events...</p>}
+          {loading && (
+            <p className="text-center text-gray-600">Loading events...</p>
+          )}
           {error && <p className="text-center text-red-500">{error}</p>}
 
           <div className="flex flex-wrap justify-start gap-4 mt-4">
             {/* Display Events */}
-            {events.length > 0 ? (
-              events.map((event) => (
-                <EventCard
-                  key={event.id}
-                  title={event.eventTitle}
-                  description={event.description}
-                  link={`/participant/event/${event.id}`}
-                />
-              ))
-            ) : (
-              !loading && <p className="text-gray-500 text-center">No events available for {selectedHeading}</p>
-            )}
+            {events.length > 0
+              ? events.map((event) => (
+                  <EventCard
+                    key={event.id}
+                    title={event.eventTitle}
+                    description={event.eventDescription}
+                    date={event.eventDate}
+                    link={`/participant/event/${event.id}`}
+                  />
+                ))
+              : !loading && (
+                  <p className="text-gray-500 text-center">
+                    No events available for {selectedHeading}
+                  </p>
+                )}
           </div>
         </div>
       </div>
@@ -118,7 +125,10 @@ const EventSection = () => {
 
 // Event Card Component
 const EventCard = ({ title, description, link }) => (
-  <Link to={link} className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+  <Link
+    to={link}
+    className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md"
+  >
     <div className="p-4">
       <h2 className="font-bold text-xl">{title}</h2>
       <p className="mt-2">{description}</p>

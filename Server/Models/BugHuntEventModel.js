@@ -1,6 +1,16 @@
 import mongoose from 'mongoose'; 
 
 const BugHuntArenaSchema = new mongoose.Schema({
+    eventTitle: {
+        type :   mongoose.Schema.Types.ObjectId ,
+        ref : 'Event',
+        required : true,
+    },
+    eventDescription : {
+        type :   mongoose.Schema.Types.ObjectId ,
+        ref : 'Event',
+        required : true,
+    },
     problemDescription : {
         type : String,
         required : true,
