@@ -79,6 +79,7 @@ const EventSection = () => {
             onClick={() => setSelectedHeading(item)}
           >
             <span className="text-[2vmin] font-poppins uppercase">{item}</span>
+            {console.log(item)}
           </div>
         ))}
       </div>
