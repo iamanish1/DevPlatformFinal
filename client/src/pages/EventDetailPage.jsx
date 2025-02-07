@@ -10,7 +10,7 @@ import { useRef } from "react";
 
 
 
-const BugHuntArena = () => {
+const EventDetailPage = () => {
   const detailsRef = useRef(null);
   const processRef = useRef(null);
   const rulesRef = useRef(null);
@@ -26,6 +26,7 @@ const BugHuntArena = () => {
 
 
   return (
+
     <>
       {/* Nav Bar */}
       <NavBar2 />
@@ -360,4 +361,4 @@ const BugHuntArena = () => {
   );
 };
 
-export default BugHuntArena;
+export default EventDetailPage;

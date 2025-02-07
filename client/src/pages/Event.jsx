@@ -266,7 +266,7 @@ const EventSection = () => {
             {selectHeading === "Bug Hunt Arena" && (
               <>
                 {/* Bug Hunt Arena Card */}
-                <Link to="/participant/bughunt" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+                <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl">Bug Hunt Arena</h2>
                     <p className="mt-2">Test projects and find bugs. Compete with others for rewards!</p>
@@ -277,7 +277,7 @@ const EventSection = () => {
              {selectHeading === "Hackathon" && (
               <>
               {/* Event card */}
-              <Link to="/participant/Hackthon" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl"> Hackthon Event</h2>
                     <p className="mt-2">Hackthon Event Card</p>
@@ -288,7 +288,7 @@ const EventSection = () => {
              {selectHeading === "Debugging Duel" && (
               <>
               {/* Event card */}
-              <Link to="/participant/debuggingduel" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl"> Debugging Duel Event</h2>
                     <p className="mt-2">Debugging Duel Event Card</p>
@@ -299,7 +299,7 @@ const EventSection = () => {
             {selectHeading === "Code-battel" && (
               <>
               {/* Event card */}
-              <Link to="/participant/codebattel" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl"> code battel Duel Event</h2>
                     <p className="mt-2"> code battel  Event Card</p>
@@ -311,7 +311,7 @@ const EventSection = () => {
             {selectHeading === "speed-Guidance" && (
               <>
               {/* Event card */}
-              <Link to="/participant/speedguide" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl"> speed-Guidance Duel Event</h2>
                     <p className="mt-2"> speed-Guidance Event Card</p>
@@ -322,7 +322,7 @@ const EventSection = () => {
               {selectHeading === "Quiz" && (
               <>
               {/* Event card */}
-              <Link to="/participant/Quiz" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
+              <Link to="/participant/EventDetail" className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md">
                   <div className="p-4">
                     <h2 className="font-bold text-xl"> Quiz Duel Event</h2>
                     <p className="mt-2"> Quiz Event Card</p>
