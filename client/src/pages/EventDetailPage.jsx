@@ -1,363 +1,94 @@
-import Footer from "../components/Footer";
-import NavBar2 from "../components/NavBar2";
-import { FaCalendar } from "react-icons/fa";
-import { GoDotFill } from "react-icons/go";
-import { MdGroups2 } from "react-icons/md";
-import { IoPeople } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import { useRef } from "react";
-
-
-
-
 const EventDetailPage = () => {
-  const detailsRef = useRef(null);
-  const processRef = useRef(null);
-  const rulesRef = useRef(null);
-  const prizeRef = useRef(null);
-  const criteriaRef = useRef(null);
-  const reviewsRef = useRef(null);
-
-  const handleScrollTo = (ref) => {
-    if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-
   return (
-
-    <>
-      {/* Nav Bar */}
-      <NavBar2 />
-
-      {/* Banner - Event Registration Page */}
-      <div className="h-[60vmin] w-full bg-white mt-[5vmin]"></div>
-
-      {/* Main Content Section (Fixed Page Height) */}
-      <div className="h-screen w-full bg-[#F5F5F5] flex justify-between gap-[3vmin] px-[6vmin] overflow-hidden">
-        {/* Left Section */}
-        <div className="flex-1 flex flex-col gap-[3vmin]">
-          <div className="bg-white h-[90vmin] mt-[4vmin] rounded-[3vmin]">
-            {/* FOr Event title and For the Banner Image ; */}
-            <div className="flex gap-[5vmin]">
-              <div className="bg-orange-200 h-[25vmin] w-[25vmin] ml-[4vmin] mt-[4vmin] mb-[4vmin] rounded-[2vmin]">
-                cover Image of the event
-              </div>
-              <div className="flex flex-col mt-[3.5vmin]">
-                <div className="text-[6vmin] uppercase font-poppins font-bold">
-                  Code King Bug Hunt Arena
-                </div>
-                <div className="text-[2.5vmin] font-sans">
-                  <p>Hosted-by-Devhubs Platfrom </p>
-                </div>
-                <div className="flex mt-[3vmin] gap-[3vmin]">
-                  <div
-                    className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                    border border-[#4C1A76] font-sans text-[2.3vmin] uppercase font-semibold"
-                  >
-                    MERN Stack
-                  </div>
-                  <div
-                    className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                    border border-[#4C1A76] font-sans text-[2.3vmin] uppercase font-semibold"
-                  >
-                    Bug Hunting
-                  </div>
-                  <div
-                    className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                    border border-[#4C1A76] font-sans text-[2.3vmin] uppercase font-semibold"
-                  >
-                    Coding Skill
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Fixed Submenu (Does not move while scrolling) */}
-          <div
-            className="bg-white h-[25vmin] sticky top-0 z-10 flex 
-          gap-[4vmin] justify-evenly items-center rounded-[3vmin]"
-          >
-            <div
-              className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                    font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-                    onClick={() => handleScrollTo(detailsRef)}
-            >
-              Details
-            </div>
-            <div
-              className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-              onClick={() => handleScrollTo(processRef)}
-            >
-              Proccess
-            </div>
-            <div
-              className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-                    onClick={() => handleScrollTo(rulesRef)}
-            >
-              Rules
-            </div>
-            <div
-              className="h-[7vmin] w-[20vmin] rounded-[5vmin] flex justify-center items-center
-                   font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-                    onClick={() => handleScrollTo(prizeRef)}
-            >
-              Prize
-            </div>
-            <div
-              className="h-[7vmin] w-[20vmin] flex justify-center items-center
-              font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-              onClick={() => handleScrollTo(criteriaRef)}
-            >
-              Criteria
-            </div>
-            <div
-              className="h-[7vmin] w-[20vmin] flex justify-center items-center
-              font-sans text-[2.3vmin] uppercase font-semibold hover: cursor-pointer"
-              onClick={() => handleScrollTo(reviewsRef)}
-            >
-              Reviews
-            </div>
-          </div>
-
-          {/* Scrollable Detail Section (Auto-scrolls when user scrolls the page) */}
-          <div
-            className="bg-white h-[130vmin] overflow-y-auto p-[2vmin] no-scrollbar rounded-[2vmin]"
-            style={{ scrollBehavior: "smooth" }}
-          >
-            {/* This part is scrollable */}
-            <div>
-              <div>
-                <h1>
-                  What is{" "}
-                  <span className="font-bold uppercase">
-                    {" "}
-                    Code King Bug Hunt Arena{" "}
-                  </span>
-                  ?
-                </h1>
-              </div>
-              <div className=" font-poppins text-[2.5vmin] mt-[2vmin]" ref={detailsRef}>
-                <p>
-                  Bug Hunt Arena is an event-driven bug bounty competition,
-                  where developers submit projects for testing, and testers
-                  compete to find and report bugs in a time-bound event.
-                </p>
-                <br /> Key Highlights of the Event :
-                <br />
-                <div className="flex flex-col gap-[0.5vmin] mt-[2vmin]">
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Time-Limited Bug Testing Events <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Specific start and end times
-                    <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Gamified Testing & Rewards Points badges
-                    <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    AI-Driven Bug Validation
-                    <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Faster review & ranking <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Live Leaderboard Real-time rankings
-                    <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    testers In-Built Compiler <br />
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    Testing Tools For live debugging
-                  </div>
-                </div>
-              </div>
-              <div ref={processRef}>
-                <h1 className="text-[2.5vmin] font-bold font-poppins uppercase mt-[2vmin] mb-[2vmin]">
-                  how it works ?
-                </h1>
-              </div>
-              <div className="font-sans text-[2.5vin]">
-                Developers Submit Projects for Testing Each event features
-                multiple projects submitted by developers. Developers define the
-                scope, rules, and reward structure (cash prizes, points, or
-                reputation boosts). Testers Start Hunting Bugs Once the event
-                starts, testers analyze code, run test cases, and report bugs. A
-                bug submission tool allows testers to submit: Screenshots &
-                videos of bugs Technical explanations & reproduction steps
-                Suggested fixes and developer also fixed the bug within the
-                limited time periord
-              </div>
-              <div className="mt-[2vmin] font-semibold">
-                Note : Project Owner Provides you the All reports related to the
-                bug . You have to participate in the event by submitting your
-                bug reports and code solution.
-              </div>
-              <div className="mt-[2vmin]" ref={rulesRef}>
-                <p className="font-bold">Rules :</p>
-                <div className="flex flex-col gap-[0.5vmin] mt-[2vmin]">
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    No Automated Testing Tools Manual testing only.
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    No Fake Bug Reports Submitting false reports will lead to a
-                    penalty.
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    No Code Manipulation Testers cannot intentionally modify
-                    code to create artificial bugs.
-                  </div>
-                  <div className="flex flex-row">
-                    <GoDotFill className="mt-[0.5vmin]" />
-                    No Collusion Testers and developers cannot secretly
-                    collaborate to generate false bug-fix
-                  </div>
-                  {/* Prize box */}
-                  <div className="flex flex-col gap-[2vmin]" ref={prizeRef}>
-                    <div className="font-bold font-poppins text-[4vmin] mt-[2vmin]">
-                      Prize :
-                    </div>
-                    <div className="font-sans text-[2.5vmin] uppercase font-semibold">
-                      First Poistion : 300
-                    </div>
-                    <div className="font-sans text-[2.5vmin] uppercase font-semibold">
-                      Second poistion : 200
-                    </div>
-                    <div className="font-sans text-[2.5vmin] uppercase font-semibold">
-                      Third Poision : 400
-                    </div>
-                  </div>
-                  {/* Crieria Judging criteria  */}
-                  <div className="mt-[2vmin]" ref={criteriaRef}>
-                    Result will Be decleared on these Criteria :
-                    <div className="flex flex-row gap-[1vmin] mt-[2vmin]">
-                      <GoDotFill className="mt-[0.5vmin]" />
-                      Based on your Code Redability .
-                    </div>
-                    <div className="flex flex-row">
-                      <GoDotFill className="mt-[0.5vmin]" />
-                      Based on the number of bugs you solved .
-                    </div>
-                    <div className="flex flex-row">
-                      <GoDotFill className="mt-[0.5vmin]" />
-                      Based on the complexity of your Code .
-                    </div>
-                    <div className="flex flex-row">
-                      <GoDotFill className="mt-[0.5vmin]" />
-                      Based on the time you took to report and fix the bugs .
-                    </div>
-                  </div>
-                  <div>
-                    <div className="mt-[2vmin]" ref={reviewsRef}>
-                      <h1 className="text-[4vmin] font-poppins uppercase font-bold">
-                        Sumbit Your Review About The Event :
-                      </h1>
-                    </div>
-                    <div className="flex flex-row mt-[3vmin] mb-[5vmin]">
-                      <div className="flex items-center mr-[2vmin]">
-                        <button
-                          className="bg-[#4C1A76] h-[7vmin] w-[20vmin] rounded-[4vmin]
-                        text-white font-poppins"
-                        >
-                          Sumbit
-                        </button>
-                      </div>
-                      <div>
-                        <form action="">
-                          <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="Enter your review"
-                            className="h-[6.5vmin] w-[90vmin] rounded-[1vmin]  bg-[#F5F5F5]
-                        focus:outline-none focus:ring-0 px-[2vmin] text-[2.5vmin] font-sans border border-gray-100"
-                          />
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Section */}
-        <div className="flex flex-col gap-[4vmin]">
-          <div className="h-[60vmin] w-[50vmin] bg-white mt-[4vmin] ml-[0.5vmin] rounded-[2.5vmin]">
-            <div className="flex justify-center">
-              <h1 className="text-[3.5vmin] uppercase font-poppins font-semibold mt-[2vmin]">Bug Hunt Arena</h1>
-            </div>
-            <div className="flex flex-row mt-[3vmin]">
-              <div className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
-              rounded-[2vmin] ml-[2vmin]">
-              <MdGroups2 className="text-[4vmin]" />
-              </div>
-              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[1vmin]">No of Participant :</h1>
-            </div>
-            <div className="flex flex-row mt-[3vmin]">
-              <div className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
-              rounded-[2vmin] ml-[2vmin] mt-[2vmin]">
-              <IoPeople className="text-[4vmin]" />
-              </div>
-              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[2vmin]">Team size :</h1>
-            </div>
-            <div className="flex flex-row mt-[3vmin]">
-              <div  className="h-[8vmin] w-[8vmin] bg-[#F5F5F5] flex justify-center items-center
-              rounded-[2vmin] ml-[2vmin] mt-[2vmin]">
-              <FaCalendar className="text-[4vmin]"/>
-              </div>
-              <h1 className="text-[2.5vmin] font-sans font-semibold ml-[2vmin] mt-[2vmin]">Date & Time :</h1>
-            </div>
-            <div className="flex  justify-center items-center mt-[5vmin]">
-             <Link to="/participate">
-             <button className="w-[45vmin] h-[6.5vmin] bg-[#4C1A76] rounded-[4vmin]
-              font-poppins font-semibold uppercase text-white text-[2.5vmin]">Register</button>
-             </Link>
-            
-            </div>
-          </div>
-          <div className="h-[30vmin] w-[50vmin] bg-white mrl-[0.5vmin]">
-            upcoming events
-          </div>
-        </div>
+    <div className="flex flex-col min-h-screen w-full items-center bg-white">
+      {/* Event Cover Image */}
+      <div className="w-full h-[40vmin] bg-gray-300 flex justify-center items-center text-2xl font-bold">
+        Event Cover Image
       </div>
 
-      {/* Footer (Always Visible) */}
-      <Footer />
+      {/* Event Title & Details */}
+      <div className="w-[80%] mt-6 text-center">
+        <h1 className="text-[5vmin] font-bold text-[#4C1A76]">Bug Hunt Arena</h1>
+        <p className="text-[2.5vmin] text-gray-600 font-semibold mt-2">
+          Hosted by Dev Hub Platform
+        </p>
+        <p className="text-[2.2vmin] text-gray-500 mt-1">Ends in: 1d 5h 10m</p>
+      </div>
 
-      {/* Hide Scrollbar CSS */}
-      <style>
-        {`
-          .no-scrollbar::-webkit-scrollbar {
-            display: none;
+      {/* Category Tags */}
+      <div className="flex gap-4 mt-4">
+        {["MERN Stack", "Bug Hunting", "Coding Skill"].map((category, index) => (
+          <div
+            key={index}
+            className="h-[7vmin] px-6 py-2 rounded-full border border-[#4C1A76] text-[2.3vmin] uppercase font-semibold flex items-center justify-center bg-[#F9F4FC] text-[#4C1A76]"
+          >
+            {category}
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Menu */}
+      <div className="w-full flex justify-center border-b-2 mt-6 sticky top-0 bg-white py-3 z-10 shadow-sm">
+        {["Details", "Process", "Rules", "Prizes"].map((item, index) => (
+          <div
+            key={index}
+            className="mx-4 cursor-pointer py-2 px-4 text-gray-700 hover:text-[#4C1A76] font-medium transition duration-300"
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+
+      {/* Event Sections */}
+      <div className="w-[80%] mt-8 space-y-8">
+        {[
+          {
+            title: "Details",
+            content:
+              "Developers submit projects for testing. Each event features multiple projects where developers define the scope, rules, and reward structure (cash prizes, points, or reputation boosts)."
+          },
+          {
+            title: "Process",
+            content: (
+              <ul className="list-disc pl-6 text-[2.5vmin] text-gray-600 mt-2 space-y-1">
+                <li>Developers submit their projects.</li>
+                <li>Testers participate and find bugs.</li>
+                <li>Reported bugs are verified and ranked based on severity.</li>
+                <li>Winners are determined based on their performance.</li>
+              </ul>
+            )
+          },
+          {
+            title: "Prizes",
+            content: (
+              <div className="mt-4">
+                {[
+                  { position: "First", reward: 1000 },
+                  { position: "Second", reward: 700 },
+                  { position: "Third", reward: 400 }
+                ].map((prize, index) => (
+                  <div key={index} className="flex justify-between py-2 border-b">
+                    <span className="text-[2.5vmin] font-medium text-gray-700">
+                      {prize.position} Position
+                    </span>
+                    <span className="text-[2.5vmin] text-[#4C1A76] font-semibold">
+                      ₹{prize.reward}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )
           }
-          .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        `}
-      </style>
-    </>
+        ].map((section, index) => (
+          <div key={index} className="text-left">
+            <h2 className="text-[3.5vmin] font-semibold text-[#4C1A76] mb-2">
+              {section.title}
+            </h2>
+            <p className="text-[2.5vmin] text-gray-600">{section.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

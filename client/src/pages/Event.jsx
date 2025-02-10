@@ -125,7 +125,7 @@ const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/participant/:eventId`);
+    navigate(`/participant/:eventType`);
   };
 
   return (
