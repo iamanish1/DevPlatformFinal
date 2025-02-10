@@ -76,7 +76,7 @@ const EventSection = () => {
           <div
             key={index}
             className={`bg-white h-[5.5vmin] w-[25vmin] flex items-center justify-center rounded-[4vmin] shadow-md hover:bg-[#F76C21] cursor-pointer 
-              ${selectedHeading === item ? "bg-[#F76C21] text-white" : ""}`}
+              ${selectedHeading === item ? "bg-[#F76C21] text-black" : ""}`}
             onClick={() => setSelectedHeading(item)}
           >
             <span className="text-[2vmin] font-poppins uppercase">{item}</span>
@@ -85,10 +85,10 @@ const EventSection = () => {
       </div>
 
       {/* Main Section */}
-      <div className="flex justify-between mt-[8vmin] gap-x-[10vmin]">
+      <div className="flex justify-between mt-[3vmin] gap-x-[10vmin]">
         {/* Event Section */}
         <div className="w-full">
-          <h1 className="text-[3vmin] font-bold mt-[3vmin] uppercase">
+          <h1 className="text-[4.5vmin] font-bold mt-[1.5vmin] uppercase mb-[4vmin] ml-[3vmin]">
             {selectedHeading}
           </h1>
 
@@ -98,7 +98,7 @@ const EventSection = () => {
           )}
           {error && <p className="text-center text-red-500">{error}</p>}
 
-          <div className="flex flex-wrap justify-start gap-4 mt-4">
+          <div className="flex flex-wrap justify-start gap-[4vmin] ml-[5vmin]">
             {/* Display Events */}
             {events.length > 0
               ? events.map((event) => (
