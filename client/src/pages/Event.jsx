@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NavBar2 from "../components/NavBar2";
 import Footer from "../components/Footer";
 
@@ -103,11 +103,8 @@ const EventSection = () => {
             {events.length > 0
               ? events.map((event) => (
                   <EventCard
-                    key={event.id}
-                    title={event.eventTitle}
-                    description={event.eventDescription}
-                    date={event.eventDate}
-                    link={`/participant/event/${event.id}`}
+                    key={event._id}
+                    event={event}
                   />
                 ))
               : !loading && (
@@ -124,16 +121,24 @@ const EventSection = () => {
 };
 
 // Event Card Component
-const EventCard = ({ title, description, link }) => (
-  <Link
-    to={link}
-    className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md"
-  >
-    <div className="p-4">
-      <h2 className="font-bold text-xl">{title}</h2>
-      <p className="mt-2">{description}</p>
+const EventCard = ({ event }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/participant/:eventId`);
+  };
+
+  return (
+    <div
+      onClick={handleClick}
+      className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md cursor-pointer"
+    >
+      <div className="p-4">
+        <h2 className="font-bold text-xl">{event.eventTitle}</h2>
+        <p className="mt-2">{event.eventDescription}</p>
+      </div>
     </div>
-  </Link>
-);
+  );
+};
 
 export default EventSection;
