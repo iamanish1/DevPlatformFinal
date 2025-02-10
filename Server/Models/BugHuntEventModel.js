@@ -2,13 +2,11 @@ import mongoose from 'mongoose';
 
 const BugHuntArenaSchema = new mongoose.Schema({
     eventTitle: {
-        type :   mongoose.Schema.Types.ObjectId ,
-        ref : 'Event',
+        type :  String ,
         required : true,
     },
     eventDescription : {
-        type :   mongoose.Schema.Types.ObjectId ,
-        ref : 'Event',
+        type :   String ,
         required : true,
     },
     problemDescription : {

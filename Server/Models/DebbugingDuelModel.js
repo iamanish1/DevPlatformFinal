@@ -1,16 +1,14 @@
 import mongoose from 'mongoose'; 
 
 const DebbugingDuelShema = new mongoose.Schema(
-    {   eventTitle: {
-            type :   mongoose.Schema.Types.ObjectId ,
-            ref : 'Event',
-            required : true,
-        },
-        eventDescription : {
-            type :   mongoose.Schema.Types.ObjectId ,
-            ref : 'Event',
-            required : true,
-        },
+    {     eventTitle: {
+        type : String ,
+        required : true , 
+    },
+    eventDescription : {
+      type : String ,
+      required : true , 
+    },
         problem: { type: String, required: true },
         description: { type: String, required: true },
         buggyCodeFile: { type: String, required: true },

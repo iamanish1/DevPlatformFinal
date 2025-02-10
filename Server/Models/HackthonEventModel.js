@@ -2,15 +2,13 @@ import mongoose from "mongoose";
 
 const HackathonSchema = new mongoose.Schema({
   eventTitle: {
-          type :   mongoose.Schema.Types.ObjectId ,
-          ref : 'Event',
-          required : true,
-      },
-      eventDescription : {
-          type :   mongoose.Schema.Types.ObjectId ,
-          ref : 'Event',
-          required : true,
-      },
+    type : String ,
+    required : true , 
+},
+eventDescription : {
+  type : String ,
+  required : true , 
+},
   HackthonType: {
     type: String,  // Corrected here
     enum: ["offline", "online"],
