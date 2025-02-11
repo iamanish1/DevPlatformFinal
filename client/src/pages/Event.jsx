@@ -125,7 +125,12 @@ const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/participant/:eventType`);
+    console.log("Event Data:", event); // Debug log
+  
+  const eventType = event?.HackthonType || "unknown"; // Use correct field
+  const eventId = event?._id || "not-found"; // Use correct field
+
+  navigate(`/events/details?eventType=${eventType}&eventId=${eventId}`);
   };
 
   return (

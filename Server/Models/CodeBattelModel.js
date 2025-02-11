@@ -10,6 +10,19 @@ const CodeBattelSchema =  new mongoose.Schema({
       type : String ,
       required : true , 
     },
+    eventType: {
+      type: String,
+      required: true,
+      enum: [
+        "bug_hunt_arena",
+        "hackathon",
+        "debugging_duel",
+        "code_battle",
+        "speed_guidance",
+        "quiz",
+      ],
+    },
+  
     problemCoding: { type: String, required: true },
     problemDescription: { type: String, required: true },
     hostedBy: { type: mongoose.Schema.Types.ObjectId, ref: "AuthUser", required: true },

@@ -9,6 +9,19 @@ eventDescription : {
   type : String ,
   required : true , 
 },
+eventType: {
+  type: String,
+  required: true,
+  enum: [
+    "bug_hunt_arena",
+    "hackathon",
+    "debugging_duel",
+    "code_battle",
+    "speed_guidance",
+    "quiz",
+  ],
+},
+
   HackthonType: {
     type: String,  // Corrected here
     enum: ["offline", "online"],

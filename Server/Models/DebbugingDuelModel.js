@@ -9,6 +9,19 @@ const DebbugingDuelShema = new mongoose.Schema(
       type : String ,
       required : true , 
     },
+    eventType: {
+        type: String,
+        required: true,
+        enum: [
+          "bug_hunt_arena",
+          "hackathon",
+          "debugging_duel",
+          "code_battle",
+          "speed_guidance",
+          "quiz",
+        ],
+      },
+    
         problem: { type: String, required: true },
         description: { type: String, required: true },
         buggyCodeFile: { type: String, required: true },

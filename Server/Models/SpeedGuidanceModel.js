@@ -10,6 +10,19 @@ const SpeedGuidnaceSchema = new mongoose.Schema({
       type : String ,
       required : true , 
     },
+    eventType: {
+      type: String,
+      required: true,
+      enum: [
+        "bug_hunt_arena",
+        "hackathon",
+        "debugging_duel",
+        "code_battle",
+        "speed_guidance",
+        "quiz",
+      ],
+    },
+  
     mentorshipPersonName: { type: String, required: true },
     mentorshipDomain: { type: String, required: true },
     mentorshipTitle: { type: String, required: true },

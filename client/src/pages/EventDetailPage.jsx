@@ -59,6 +59,11 @@ const EventDetailPage = () => {
             )
           },
           {
+            title: "RULES",
+            content:
+              "Developers submit projects for testing. Each event features multiple projects where developers define the scope, rules, and reward structure (cash prizes, points, or reputation boosts)."
+          },
+          {
             title: "Prizes",
             content: (
               <div className="mt-4">
