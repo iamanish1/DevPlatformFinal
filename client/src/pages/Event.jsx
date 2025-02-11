@@ -130,7 +130,8 @@ const EventCard = ({ event }) => {
   const eventType = event?.HackthonType || "unknown"; // Use correct field
   const eventId = event?._id || "not-found"; // Use correct field
 
-  navigate(`/events/details?eventType=${eventType}&eventId=${eventId}`);
+  navigate(`/Events/events/details?eventType=${eventType}&eventId=${eventId}`);
+
   };
 
   return (
