@@ -4,12 +4,14 @@ import axios from "axios";
 
 const EventDetailPage = () => {
   // Step 1: Get the event ID from the URL
-  const { eventId } = useParams();  // Access eventId from the URL parameters
+  const { eventId } = useParams(); // Access eventId from the URL parameters
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Step 2: Fetch event data only if eventId is valid
   useEffect(() => {
+    const url = `http://localhost:8000/api/getEvent/general/specific/${eventId}`;
+    console.log( "this is my api url" , url);
     if (!eventId) {
       console.error("Event ID is undefined!");
       setLoading(false);
@@ -18,8 +20,10 @@ const EventDetailPage = () => {
 
     const fetchEventData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/getEvent/general/${eventId}`);
-        console.log("Event Data:", response.data);
+        const response = await axios.get(
+          `http://localhost:8000/api/getEvent/general/specific/${eventId}`
+        );
+        console.log("Event this is  Data:", response.data);
 
         // Ensure the data you get has _id and use it
         setEventData(response.data); // Store event data in state
@@ -48,12 +52,24 @@ const EventDetailPage = () => {
       <h1>{eventData.eventTitle}</h1>
       <p>{eventData.eventDescription}</p>
       <h3>Hackathon Details</h3>
-      <p><strong>Type:</strong> {eventData.HackthonType}</p>
-      <p><strong>Location:</strong> {eventData.hackthonlocation}</p>
-      <p><strong>College Name:</strong> {eventData.hackthoncollegeName}</p>
-      <p><strong>Prize:</strong> {eventData.hackthonprize}</p>
-      <p><strong>Rules:</strong> {eventData.hackthonrules}</p>
-      <p><strong>Theme:</strong> {eventData.hackthontheme}</p>
+      <p>
+        <strong>Type:</strong> {eventData.HackthonType}
+      </p>
+      <p>
+        <strong>Location:</strong> {eventData.hackthonlocation}
+      </p>
+      <p>
+        <strong>College Name:</strong> {eventData.hackthoncollegeName}
+      </p>
+      <p>
+        <strong>Prize:</strong> {eventData.hackthonprize}
+      </p>
+      <p>
+        <strong>Rules:</strong> {eventData.hackthonrules}
+      </p>
+      <p>
+        <strong>Theme:</strong> {eventData.hackthontheme}
+      </p>
       <h4>Banner:</h4>
       <img src={eventData.hackthonbanner} alt="Hackathon Banner" />
     </div>

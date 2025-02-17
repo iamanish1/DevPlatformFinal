@@ -125,9 +125,9 @@ const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   const handleClick = (event) => {
-    console.log("Event ID:", event._id); 
+    console.log("Event ID:", event. _id); 
     console.log("Event Data:", event);  // This should log the entire event object
-    navigate(`/events/${event._id}`);   // Pass only the event._id (the unique identifier)
+    navigate(`/events/${event. _id}`);   // Pass only the event._id (the unique identifier)
   };
   
 
