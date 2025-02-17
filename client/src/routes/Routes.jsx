@@ -31,7 +31,7 @@ const AppRoutes = () => {
         <Route path="/DeveloperMarket" element={<DeveloperMarketPlace/>} />
         <Route path="/Profile" element={<ProfilePage/>} />
         <Route path="/participant/Eventarena" element={<EventArenaPage/>} />
-        <Route path="/Events/events/details"  element={<EventDetailPage/>} />
+        <Route path="/events/:eventType"  element={<EventDetailPage/>} />
         <Route path="participant/Hackthon" element={<HackthonPage/>}/>
         <Route path="participant/debuggingduel" element={<DebuggingduelPage/>} />
         <Route path="participant/codebattel" element={<CodeBattelPage/>} />

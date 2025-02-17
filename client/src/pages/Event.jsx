@@ -124,19 +124,19 @@ const EventSection = () => {
 const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    console.log("Event Data:", event); // Debug log
-  
-  const eventType = event?.HackthonType || "unknown"; // Use correct field
-  const eventId = event?._id || "not-found"; // Use correct field
-
-  navigate(`/Events/events/details?eventType=${eventType}&eventId=${eventId}`);
-
+  const handleClick = (event) => {
+    console.log("Event ID:", event._id); 
+    console.log("Event Data:", event);  // This should log the entire event object
+    navigate(`/events/${event._id}`);   // Pass only the event._id (the unique identifier)
   };
+  
 
   return (
     <div
-      onClick={handleClick}
+     onClick={() => {
+  console.log("Event object:", event); // Log the entire event object to check its structure
+  handleClick(event);
+}}
       className="flex-shrink-0 w-[45vmin] h-[60vmin] bg-white rounded-lg shadow-md cursor-pointer"
     >
       <div className="p-4">

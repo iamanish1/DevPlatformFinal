@@ -5,6 +5,7 @@ import DebuggingDuel from "../Models/DebbugingDuelModel.js";
 import SpeedGuidance from "../Models/SpeedGuidanceModel.js";
 import Quiz from "../Models/QuizeEvent.js";
 import CodeBattle from "../Models/CodeBattelModel.js";
+import mongoose from "mongoose";
 
 const eventModels = {
   bug_hunt_arena: BugHuntArena,
@@ -73,3 +74,5 @@ export const getGeneralEvents = async (req, res) => {
        });
      }
  }
+
+
