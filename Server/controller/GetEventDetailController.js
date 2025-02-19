@@ -80,24 +80,24 @@ export const getGeneralEvents = async (req, res) => {
 
 export const getEventById = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log("🟢 Received Event ID:", id); // Debugging
+    const { refrenceId } = req.params;
+    console.log("🟢 Received Reference ID:", refrenceId); // Debugging
 
-    // Ensure ID is a valid MongoDB ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      console.log("🔴 Invalid Event ID:", id);
+    // Ensure referenceId is a valid MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(refrenceId)) {
+      console.log("🔴 Invalid Reference ID:", refrenceId);
       return res.status(400).json({
-        message: "Invalid Event ID",
+        message: "Invalid Reference ID",
         statusCode: 400,
       });
     }
 
-    // Directly fetch event by ID (no need to create ObjectId manually)
-    const event = await Event.findById(id).lean();
+    // Fetch event by referenceId
+    const event = await Event.findOne({ refrenceId }).lean();
     console.log("🟢 Fetched Event:", event); // Debugging
 
     if (!event) {
-      console.log("🔴 Event Not Found:", id);
+      console.log("🔴 Event Not Found for Reference ID:", refrenceId);
       return res.status(404).json({
         message: "Event not found",
         statusCode: 404,
@@ -111,11 +111,12 @@ export const getEventById = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("🔥 Error fetching event:", error);
+    console.error("🔥 Error fetching event by Reference ID:", error);
     return res.status(500).json({
       message: "Error fetching event",
       error: error.message,
       statusCode: 500,
     });
   }
+
 };
