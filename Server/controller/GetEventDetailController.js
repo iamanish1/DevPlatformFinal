@@ -81,37 +81,29 @@ export const getGeneralEvents = async (req, res) => {
 export const getEventById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("Received Event ID:", id); // Debugging
+    console.log("🟢 Received Event ID:", id); // Debugging
 
-    // Validate if ID is provided
-    if (!id) {
-      return res.status(400).json({
-        message: "Event ID is missing",
-        statusCode: 400,
-      });
-    }
-
-    // Validate if ID is a valid MongoDB ObjectId
+    // Ensure ID is a valid MongoDB ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
+      console.log("🔴 Invalid Event ID:", id);
       return res.status(400).json({
         message: "Invalid Event ID",
         statusCode: 400,
       });
     }
 
-    // Fetch event by ID
+    // Directly fetch event by ID (no need to create ObjectId manually)
     const event = await Event.findById(id).lean();
-    console.log("Fetched Event:", event); // Debugging
+    console.log("🟢 Fetched Event:", event); // Debugging
 
-    // If event is not found
     if (!event) {
+      console.log("🔴 Event Not Found:", id);
       return res.status(404).json({
         message: "Event not found",
         statusCode: 404,
       });
     }
 
-    // Return success response
     return res.status(200).json({
       message: "Fetched event successfully",
       event,
@@ -119,7 +111,7 @@ export const getEventById = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Error fetching event:", error);
+    console.error("🔥 Error fetching event:", error);
     return res.status(500).json({
       message: "Error fetching event",
       error: error.message,
