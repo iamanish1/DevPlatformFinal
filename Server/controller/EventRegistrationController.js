@@ -1,13 +1,23 @@
 import RegisterParticipant from "../Models/EventRegistrationModel.js" ; 
 import Event from "../Models/EventModel.js" ; 
 import sendConfirmationEmail from "../utils/SendEmail.js";
+import mongoose from "mongoose";
+
 
 
 // Function to register a participant in an event
 
 export const RegisterForEvent  = async(req, res) =>{
   try {
-    const { eventId, name , email , contactnumber, collegename } = req.body ;
+    const { eventId, name , email , contactNumber, collegename } = req.body ;
+     
+    console.log("📌 Received Event ID:", eventId);
+
+    // Validate eventId format
+    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      return res.status(400).json({ message: "Invalid event ID format" });
+    }
+
     const userId = req.AuthUser.id
     console.log("��� Received User ID:", userId); // Debugging
 
@@ -21,6 +31,7 @@ export const RegisterForEvent  = async(req, res) =>{
 
     // check if the event exists
     const event = await Event.findById(eventId);
+    console.log("Event " + event)
     if (!event) {
       return res.status(404).json({ message: "Event not found" });
     }
