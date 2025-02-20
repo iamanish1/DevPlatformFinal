@@ -5,6 +5,8 @@ import Routes from "./Routes/authentiCationRoutes.js";
 import { connectDb } from "./conectionDB.js";
 import cookieParser from "cookie-parser";
 import GetRoutes from "./Routes/GetEventRoutes.js"
+ import RegisterRoutes from "./Routes/RegisterEventRoutes.js";
+
 
 
 
@@ -30,6 +32,8 @@ const port = process.env.PORT || 5000;
 //  Routes
 app.use("/api", Routes)//  Add the GetRoutes here.  This will handle the Get requests for events.  The routes should be defined in GetEventRoutes.js.  This file should be in the Routes directory.  The file name should be GetEventRoutes.js.  The file should be in the same directory as the server.js file.  The server.js file should be in the root directory.  The routes
 app.use("/api/getEvent", GetRoutes)
+app.use("/api/registrationEvent", RegisterRoutes)
+
 //  Database Connection
 connectDb() ; 
 

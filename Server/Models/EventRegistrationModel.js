@@ -33,6 +33,10 @@ const EventRegistartionSchema =  new mongooes.Schema({
         enum : ["Registered", "Cancelled"],
         default : "Registered",
     },
+    collegename : {
+        type : String,
+        required : true,
+    },
     confirmationEmailSent: { 
         type: Boolean, 
         default: false 
@@ -41,8 +45,8 @@ const EventRegistartionSchema =  new mongooes.Schema({
 }); 
 
 // Ensure one user can register only once for the same event
-RegistrationSchema.index({ eventId: 1, userId: 1 }, { unique: true });
+EventRegistartionSchema.index({ eventId: 1, userId: 1 }, { unique: true }) ;
 
-const RegisterParticipant = mongooes.Model("RegisterParticipant", EventRegistartionSchema) ; 
+const RegisterParticipant = mongooes.model("RegisterParticipant", EventRegistartionSchema) ; 
 
 export default RegisterParticipant ;
