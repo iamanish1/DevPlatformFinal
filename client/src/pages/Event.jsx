@@ -136,9 +136,13 @@ const EventCard = ({ event }) => {
     navigate(`/Events/${event.refrenceId || event._id}`);
   };
   
-  
-
+ const maxWords = 10; // Set your desired word limit
+  const truncatedDescription = event.eventDescription
+    .split(" ")
+    .slice(0, maxWords)
+    .join(" ") + (event.eventDescription.split(" ").length > maxWords ? "..." : "");
   return (
+    
     <div
      onClick={() => {
   console.log("Event object:", event); // Log the entire event object to check its structure
@@ -148,7 +152,7 @@ const EventCard = ({ event }) => {
     >
       <div className="p-4">
         <h2 className="font-bold text-xl">{event.eventTitle}</h2>
-        <p className="mt-2">{event.eventDescription}</p>
+        <p className="mt-2">{truncatedDescription}</p>
       </div>
     </div>
   );

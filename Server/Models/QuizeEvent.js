@@ -22,11 +22,11 @@ const QuizSchema = new mongoose.Schema({
             ],
           },
         
-    category: { type: String, required: true },
+    quizcategory: { type: String, required: true },
     questions: [
         {
             question: { type: String, required: true },
-            language: { type: String },
+            options: { type: "Array", required: true },
             answer: { type: String, required: true } // Added answer field
         },
     ],

@@ -54,6 +54,18 @@ const EventDetail = () => {
     return <p>Event not found!</p>;
   }
 
+  const formattedstartDate = new Date(event.startDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const formattedendDate = new Date(event.endDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div className="flex flex-col min-h-screen w-full items-center bg-white">
       {/* Event Cover Image */}
@@ -73,8 +85,11 @@ const EventDetail = () => {
         <p className="text-[2.5vmin] text-gray-600 font-semibold mt-2">
           Hosted by {event.hostedByName || "Unknown Host"}
         </p>
+        <p className="text-[2.2vmin] text-gray-500 mt-1 s">
+          Starts at: {formattedstartDate || "TBD"}
+        </p>
         <p className="text-[2.2vmin] text-gray-500 mt-1">
-          Ends in: {event.endDate || "TBD"}
+          Ends in: {formattedendDate|| "TBD"}
         </p>
       </div>
       <Link to="/participate">
@@ -148,23 +163,26 @@ const EventDetail = () => {
         </div>
 
         {/* Prizes Section */}
-        <div className="text-left">
-          <h2 className="text-[3.5vmin] font-semibold text-[#4C1A76] mb-2">
-            Prizes
-          </h2>
-          <div className="mt-4">
-            {event.eventPrize?.map((prize, index) => (
-              <div key={index} className="flex justify-between py-2 border-b">
-                <span className="text-[2.5vmin] font-medium text-gray-700">
-                  {prize.position} Position
-                </span>
-                <span className="text-[2.5vmin] text-[#4C1A76] font-semibold">
-                  {prize.reward}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        {event.eventType !== "speed_guidance" && (
+         <div className="text-left">
+         <h2 className="text-[3.5vmin] font-semibold text-[#4C1A76] mb-2">
+           Prizes
+         </h2>
+         <div className="mt-4">
+           {event.eventPrize?.map((prize, index) => (
+             <div key={index} className="flex justify-between py-2 border-b">
+               <span className="text-[2.5vmin] font-medium text-gray-700">
+                 {prize.position} Position
+               </span>
+               <span className="text-[2.5vmin] text-[#4C1A76] font-semibold">
+                 {prize.reward}
+               </span>
+             </div>
+           ))}
+         </div>
+       </div>
+        )}
+        
          {/* Hackathon-Specific Section */}
          {event.eventType === "hackathon" && (
           <HackathonDetail eventId={event._id}  />

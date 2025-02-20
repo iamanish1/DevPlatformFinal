@@ -66,7 +66,7 @@ const EventCreation = async (req, res, Model, eventType) => {
       referenceId: specificEvent._id,
       eventDescription: req.body.eventDescription,
       refrenceId: specificEvent._id,
-      category : req.body.category,
+      quizcategory : req.body.quizcategory,
       mentorshipPersonName : req.body.mentorshipPersonName,
       mentorshipDomain : req.body.mentorshipDomain,
       mentorshipTitle : req.body.mentorshipTitle,
