@@ -85,7 +85,10 @@ const EventCreation = async (req, res, Model, eventType) => {
       hackthonprize : req.body.hackthonprize,
       hackthonrules : req.body.hackthonrules,
       numberofParticipant : req.body.numberofParticipant , 
-
+      eventRules : req.body.eventRules , 
+      eventPrize  : req.body.eventPrize , 
+      eventImage : req.body.eventImage , 
+      hostedByName : req.body.hostedByName ,
     });
 
     await event.save();

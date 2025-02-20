@@ -123,12 +123,19 @@ const EventSection = () => {
 // Event Card Component
 const EventCard = ({ event }) => {
   const navigate = useNavigate();
-
   const handleClick = (event) => {
-    console.log("Event ID:", event. _id); 
-    console.log("Event Data:", event);  // This should log the entire event object
-    navigate(`/events/${event. _id}`);   // Pass only the event._id (the unique identifier)
+    console.log("Event Object:", event); // Debug log
+    console.log("Navigating to ID:", event.refrenceId || event._id); // Ensure ID exists
+  
+    if (!event.refrenceId && !event._id) {
+      console.error("Event does not have a valid reference ID!");
+      return;
+    }
+  
+    // Navigate with correct ID (change to _id if refrenceId is missing)
+    navigate(`/Events/${event.refrenceId || event._id}`);
   };
+  
   
 
   return (
