@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
+
 
 const EventDetail = () => {
   const { refrenceId } = useParams(); // Extract ID from URL
@@ -123,10 +124,9 @@ const EventDetail = () => {
           <h2 className="text-[3.5vmin] font-semibold text-[#4C1A76] mb-2">
             Process
           </h2>
-          <p className="text-[2.5vmin] text-gray-600">
-            {event.eventProcess}
-          </p>
+          <p className="text-[2.5vmin] text-gray-600">{event.eventProcess}</p>
         </div>
+       
 
         {/* Rules Section */}
         <div className="text-left">
@@ -165,9 +165,73 @@ const EventDetail = () => {
             ))}
           </div>
         </div>
+         {/* Hackathon-Specific Section */}
+         {event.eventType === "hackathon" && (
+          <HackathonDetail eventId={event._id}  />
+        )}
       </div>
     </div>
+   
   );
+};
+
+const HackathonDetail = () => {
+  const { refrenceId } = useParams();
+  const [event, setEvent] = useState(null);
+
+  useEffect(() => {
+    console.log("Fetching hackathon events...");
+
+    axios
+      .get(`http://localhost:8000/api/getEvent/general/hackathon`)
+      .then((response) => {
+        console.log("Full response data:", response.data); // Debugging
+
+        // Ensure response.data.events is an array before using .find()
+        if (response.data && Array.isArray(response.data.events)) {
+          const selectedEvent = response.data.events.find(
+            (event) => event._id === refrenceId
+          );
+          console.log("Filtered event:", selectedEvent); // Debugging
+
+          setEvent(selectedEvent);
+        } else {
+          console.error("Unexpected data structure:", response.data);
+        }
+      })
+      .catch((error) => console.error("Error fetching event:", error));
+  }, [refrenceId]);
+
+  if (!event) return <p>Loading...</p>;
+
+  return (
+    <div className="w-[80%] mt-8 space-y-8 text-left">
+    <h2 className="text-[3.5vmin] font-semibold text-[#4C1A76] mb-[6vmin]">
+      Hackathon Details
+    </h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+      <div className="bg-gray-100 p-4 rounded-lg shadow mb-[4vmin]">
+        <h3 className="text-lg font-semibold">Event Information</h3>
+        <ul className="mt-2 space-y-2">
+          <li><strong>Mode:</strong> {event.HackthonType}</li>
+          <li><strong>Location:</strong> {event.hackthonlocation}</li>
+          <li><strong>College:</strong> {event.hackthoncollegeName}</li>
+        </ul>
+      </div>
+
+      <div className="bg-gray-100 p-4 rounded-lg shadow mb-[4vmin]">
+        <h3 className="text-lg font-semibold">Judging Criteria</h3>
+        <ul className="mt-2 space-y-2">
+          {event.judgingCriteria.map((criteria, index) => (
+            <li key={index} className="text-[2.5vmin]">{index + 1}. {criteria}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+);
+  
 };
 
 export default EventDetail;

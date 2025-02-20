@@ -21,10 +21,11 @@ const DebbugingDuelShema = new mongoose.Schema(
           "quiz",
         ],
       },
+      
     
         problem: { type: String, required: true },
         description: { type: String, required: true },
-        buggyCodeFile: { type: String, required: true },
+        buggyCodeImage: { type: String, required: true },
         hostedBy: { type: mongoose.Schema.Types.ObjectId, ref: "AuthUser", required: true },
     }
 )

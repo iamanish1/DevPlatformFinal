@@ -76,7 +76,7 @@ const EventCreation = async (req, res, Model, eventType) => {
       problemDescription : req.body.problemDescription,
       problem : req.body.problem, 
       description : req.body.description, 
-      buggyCodeFile : req.body.buggyCodeFile,
+      buggyCodeImage : req.body.buggyCodeImage,
       HakthonType : req.body.HakthonType,
       hackthondescription : req.body.hackthondescription,
       hackthonlocation : req.body.hackthonlocation,

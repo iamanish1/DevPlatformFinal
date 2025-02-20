@@ -28,14 +28,18 @@ eventType: {
     required: true,
   },
   hackthontheme: {
-    type: String,  // Corrected here
-    required: true,
+    type : [
+      {
+        type : String, 
+        required: true,
+      }
+    ]
   },
-  hackthondescription: {
-    type: String,  // Corrected here
-    required: true,
-  },
-  hackthonbanner: {
+  hackthonlocation : {
+    type : String,
+    required : true,
+  }, 
+  hackthoncollegeName: {
     type: String,  // Corrected here
     required: true,
   },
@@ -44,25 +48,29 @@ eventType: {
     ref: "AuthUser",
     required: true,
   },
-  hackthoncollegeName: {
-    type: String,  // Corrected here
-    required: true,
-  },
+
+ 
   hackthonlocation: {
     type: String,  // Corrected here
     required: true,
   },
-  hackthonprize : {
-    type: Number,
-    required: true,
-    validate: {
-      validator: Number.isInteger,  // Ensures that the value is an integer
-      message: '{VALUE} is not an integer value!',
-    }, //
+
+  hackthonparticipation : {
+    type : [
+      {
+      type : String,
+      required: true,
+    }
+    ]
   },
-  hackthonrules : {
-    type : String,
-    required : true , //
+  
+  judgingCriteria : {
+    type : [
+      {
+        type : String,
+        required: true,
+      }
+    ]
   }
 });
 
