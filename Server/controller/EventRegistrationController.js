@@ -123,7 +123,7 @@ export const CancelEventRegistration  = async(req, res) =>{
 
     export const GetParticipantRegistrationData  = async(req, res) =>{
       try {
-          const { eventId } = req.params ;
+          const { eventId } = req.params;
           console.log("�� Received User ID:", eventId);
 
           // Find and return participant's registration data
