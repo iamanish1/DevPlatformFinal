@@ -33,9 +33,11 @@ export const RegisterForEvent  = async(req, res) =>{
     if (!event) {
       return res.status(404).json({ message: "❌ Event not found!" });
     }
+    console.log(`🔍 Before Registration: ${event.numberofParticipant} participants`);
+
 
     // 🔹 Check if event is full (Ensure participantCount is initialized in the DB)
-    if (event.participantCount >= event.maxParticipants) {
+    if (event.numberofParticipant  >= event.maxParticipants) {
       return res.status(400).json({ message: "❌ Event is full!" });
     }
 
@@ -61,8 +63,16 @@ export const RegisterForEvent  = async(req, res) =>{
     registration.confirmationEmailSent = true;
     await registration.save();
 
-    // ✅ Update participant count ONLY after successful registration
-    await Event.findByIdAndUpdate(eventId, { $inc: { participantCount: 1 } });
+     // ✅ Update number of participants
+     const updatedEvent = await Event.findByIdAndUpdate(
+      eventId,
+      { $inc: { numberofParticipant: 1 } },  // Use `numberofParticipant`
+      { new: true } // Return the updated document
+    );
+
+    console.log(`✅ After Registration: ${updatedEvent.numberofParticipant} participants`);
+
+
 
     res.status(201).json({
       message: "✅ Registration successful!",

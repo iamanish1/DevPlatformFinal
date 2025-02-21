@@ -89,6 +89,7 @@ const EventCreation = async (req, res, Model, eventType) => {
       eventPrize  : req.body.eventPrize , 
       eventImage : req.body.eventImage , 
       hostedByName : req.body.hostedByName ,
+      maxParticipants : req.body.maxParticipants ,
     });
 
     await event.save();

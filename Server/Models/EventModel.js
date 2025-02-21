@@ -53,8 +53,12 @@ const EventSchema = new mongoose.Schema({
     type: Number,
     required: false,
     default: 0,
-    min: 0,
-    max: 10000, // Adjusted the maximum value to 10,000 participants
+  },
+  maxParticipants: { 
+    type: Number, 
+    required: true,  // Users must define this when creating an event
+    min: 1,  // Ensure at least 1 participant is allowed
+    max: 10000,  // Adjusted the maximum value to 10,000 participants
   },
   eventRules: {
     type: [
