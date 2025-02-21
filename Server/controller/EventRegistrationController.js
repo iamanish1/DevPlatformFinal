@@ -85,3 +85,35 @@ export const RegisterForEvent  = async(req, res) =>{
     res.status(500).json({ message: "❌ Server error!", error: error.message });
   }
 }
+
+
+// Cancel Event Registration
+
+export const CancelEventRegistration  = async(req, res) =>{
+  try {
+      const { eventId, userId } = req.body;
+      
+      console.log("�� Received Event ID:", eventId);
+      console.log("�� Received User ID:", userId);
+
+      // Find and delete registration
+
+      const registration = await RegisterParticipant.findOneAndDelete({ eventId, userId });
+      
+      if (!registration) {
+        return res.status(404).json({ message: "�� Registration not found!" });
+      }
+  //  Dcreases the participant count 
+      const updatedEvent = await Event.findByIdAndUpdate(
+        eventId,
+        { $inc: { numberofParticipant: -1 } },  // Use `numberofParticipant`
+        { new: true } // Return the updated document
+      );
+
+      console.log(`�� After cancellation: ${updatedEvent.numberofParticipant} participants`);
+      res.status(200).json({ message: "�� Registration cancelled!" });
+  
+  } catch (error) {
+    res.status(500).json({ message: "server error!", error: error.message });
+  }
+}
