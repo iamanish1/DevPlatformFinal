@@ -117,3 +117,22 @@ export const CancelEventRegistration  = async(req, res) =>{
     res.status(500).json({ message: "server error!", error: error.message });
   }
 }
+
+
+// Get EventRegistration data of participant 
+
+    export const GetParticipantRegistrationData  = async(req, res) =>{
+      try {
+          const { eventId } = req.params ;
+          console.log("�� Received User ID:", eventId);
+
+          // Find and return participant's registration data
+
+          const registrations = await RegisterParticipant.find({ eventId });
+
+          res.status(200).json({ message: "Fetched participant's registration data successfully", registrations });
+  
+      } catch (error) {
+        res.status(500).json({ message: "Server error!", error: error.message });
+      }
+    }
