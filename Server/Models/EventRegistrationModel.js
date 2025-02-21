@@ -1,52 +1,50 @@
-import mongooes from "mongoose" ; 
+import mongoose from "mongoose";
 
+const EventRegistrationSchema = new mongoose.Schema({
+  eventId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Event",
+    required: true,  // Ensure eventId is always provided
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "AuthUser",
+    required: true,  // Ensure userId is always provided
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  contactNumber: {
+    type: String,
+    required: true,
+  },
+  registrationDate: {
+    type: Date,
+    default: Date.now,
+  },
+  status: {
+    type: String,
+    enum: ["Registered", "Cancelled"],
+    default: "Registered",
+  },
+  collegename: {
+    type: String,
+    required: true,
+  },
+  confirmationEmailSent: { 
+    type: Boolean, 
+    default: false 
+  }
+});
 
+// ✅ Ensure one user can register only once for the same event
+EventRegistrationSchema.index({ eventId: 1, userId: 1 }, { unique: true });
 
-const EventRegistartionSchema =  new mongooes.Schema({
-    eventid : {
-        type : mongooes.Schema.Types.ObjectId, 
-        ref : "Event"
-    }
-    ,
-    userId : {
-        type : mongooes.Schema.Types.ObjectId,
-        ref : "AuthUser"
-    },
-    name : {
-        type : String,
-        required : true,
-    } , 
-    email : {
-        type : String,
-        required : true,
-    } ,
-    contactNumber : {
-        type : String,
-        required : true,
-    } ,
-    registrationDate : {
-        type : Date,
-        default : Date.now,
-    },
-    status : {
-        type : String,
-        enum : ["Registered", "Cancelled"],
-        default : "Registered",
-    },
-    collegename : {
-        type : String,
-        required : true,
-    },
-    confirmationEmailSent: { 
-        type: Boolean, 
-        default: false 
-    }
+const RegisterParticipant = mongoose.model("RegisterParticipant", EventRegistrationSchema);
 
-}); 
-
-// Ensure one user can register only once for the same event
-EventRegistartionSchema.index({ eventId: 1, userId: 1 }, { unique: true }) ;
-
-const RegisterParticipant = mongooes.model("RegisterParticipant", EventRegistartionSchema) ; 
-
-export default RegisterParticipant ;
+export default RegisterParticipant;

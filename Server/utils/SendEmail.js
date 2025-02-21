@@ -1,18 +1,23 @@
 import nodemailer from "nodemailer" ; 
 
 
+
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "animetra14@gmail.com",
-        pass: "iamanish@2005" ,
+      
+        user: "devhubs526@gmail.com" ,// Load email from env
+        pass: "pmvn racv akjt friz", // Load app password from env
+
     },
 });
+
+
 
 // Function to send email
 const sendConfirmationEmail = async (email , eventTitle)=> {
        const mailoptions = {
-        from: process.env.GMAIL_USERNAME,
+        from: "devhubs526@gmail.com" ,
         to: email,
         subject: "Event Registration Confirmation",
         text: `You have successfully registered for the event: ${eventTitle}. See you there!`,

@@ -9,8 +9,8 @@ import mongoose from "mongoose";
 
 export const RegisterForEvent  = async(req, res) =>{
   try {
-    const { eventId, name , email , contactNumber, collegename } = req.body ;
-     
+    const { eventId, name, email, contactNumber, collegename } = req.body;
+    
     console.log("📌 Received Event ID:", eventId);
 
     // Validate eventId format
@@ -18,30 +18,28 @@ export const RegisterForEvent  = async(req, res) =>{
       return res.status(400).json({ message: "Invalid event ID format" });
     }
 
-    const userId = req.AuthUser.id
-    console.log("��� Received User ID:", userId); // Debugging
+    const userId = req.AuthUser.id;
+    console.log("📌 Received User ID:", userId); // Debugging ✅
 
-    // check if the user is already registered
+    // 🔹 Check if the user is already registered for THIS specific event
     const existingRegistration = await RegisterParticipant.findOne({ eventId, userId });
+
     if (existingRegistration) {
-      return res.status(400).json(
-        { message: "You are already registered for this event" }
-      );
+      return res.status(400).json({ message: "❌ You are already registered for this event!" });
     }
 
-    // check if the event exists
+    // 🔹 Check if the event exists
     const event = await Event.findById(eventId);
-    console.log("Event " + event)
     if (!event) {
-      return res.status(404).json({ message: "Event not found" });
+      return res.status(404).json({ message: "❌ Event not found!" });
     }
 
-      // ✅ Check if event is full
-      if (event.participantCount >= event.maxParticipants) {
-        return res.status(400).json({ message: "Event is full" });
+    // 🔹 Check if event is full (Ensure participantCount is initialized in the DB)
+    if (event.participantCount >= event.maxParticipants) {
+      return res.status(400).json({ message: "❌ Event is full!" });
     }
 
-    // create a new registration
+    // 🔹 Create a new registration entry
     const registration = new RegisterParticipant({
       eventId,
       userId,
@@ -49,28 +47,31 @@ export const RegisterForEvent  = async(req, res) =>{
       email,
       contactNumber,
       collegename,
+      status: "Registered",
+      confirmationEmailSent: false, 
     });
 
-    // save the registration
+    // 🔹 Save the registration
     await registration.save();
 
-    // send confirmation email
+    // 🔹 Send confirmation email
     await sendConfirmationEmail(email, "Event Registration Confirmation");
 
-    // ✅ Update participant count
+    // 🔹 Mark email as sent
+    registration.confirmationEmailSent = true;
+    await registration.save();
+
+    // ✅ Update participant count ONLY after successful registration
     await Event.findByIdAndUpdate(eventId, { $inc: { participantCount: 1 } });
 
     res.status(201).json({
-        message: "�� Registration successful",
-        registration,
-        statusCode: 201,
-  
+      message: "✅ Registration successful!",
+      registration,
+      statusCode: 201,
     });
-    
+
   } catch (error) {
-    res.status(500).json(
-        { message: "Server error", 
-        error : error.message }
-    );
+    console.error("❌ Registration Error:", error);
+    res.status(500).json({ message: "❌ Server error!", error: error.message });
   }
 }
