@@ -38,7 +38,7 @@ const AppRoutes = () => {
         <Route path="participant/speedguide" element={<SpeedGuidnace/>}/>
         <Route path="participant/Quiz" element={<QuizPage/>} />
         <Route path="/mentorship" element={<MentorshipPage/>} />
-        <Route path="/participate" element={<FinalRegistrationPage/>} />
+        <Route path="/participate/:refrenceId" element={<FinalRegistrationPage/>} />
 
         </Route>
         <Route path="/" element={<HomePage/>} />

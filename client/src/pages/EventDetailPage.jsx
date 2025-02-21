@@ -92,7 +92,7 @@ const EventDetail = () => {
           Ends in: {formattedendDate|| "TBD"}
         </p>
       </div>
-      <Link to="/participate">
+      <Link to={`/participate/${refrenceId}`}>
         <button className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300">
           Register Now
         </button>
