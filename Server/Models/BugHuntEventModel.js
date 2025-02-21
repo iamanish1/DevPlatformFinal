@@ -42,6 +42,28 @@ const BugHuntArenaSchema = new mongoose.Schema({
         type : [String],
         required : false,
     },
+    eventStartTime: {
+        type: String,
+        reuired: true,
+      },
+    
+      eventEndTime: {
+        type: String,
+        required: true,
+      },
+      eventStatus: {
+        type: String,
+        enum: ["Upcoming", "Live", "Ended"],
+        default: "Upcoming",
+      },
+      startDate: {
+        type: Date,
+        required: true,
+      },
+      endDate: {
+        type: Date,
+        required: true,
+      },
     hostedBy: { type: mongoose.Schema.Types.ObjectId, ref: "AuthUser", required: true },
 })
 

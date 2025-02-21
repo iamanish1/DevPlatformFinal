@@ -71,7 +71,29 @@ eventType: {
         required: true,
       }
     ]
-  }
+  },
+  eventStartTime: {
+    type: String,
+    reuired: true,
+  },
+
+  eventEndTime: {
+    type: String,
+    required: true,
+  },
+  eventStatus: {
+    type: String,
+    enum: ["Upcoming", "Live", "Ended"],
+    default: "Upcoming",
+  },
+  startDate: {
+    type: Date,
+    required: true,
+  },
+  endDate: {
+    type: Date,
+    required: true,
+  },
 });
 
 const Hackathon = mongoose.model("Hackathon", HackathonSchema);

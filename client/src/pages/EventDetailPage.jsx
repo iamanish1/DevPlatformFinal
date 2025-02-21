@@ -29,11 +29,13 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
           const fetchedEvent = response.data.event;
           setEvent(fetchedEvent);
           setEventId(fetchedEvent._id); // Store the correct _id
+        console.log("this is my event data after regiestration", response.data)
   
           // Check if the event is live
           const now = new Date();
-          const eventStart = new Date(`${fetchedEvent.startDate}T${fetchedEvent.startTime}`);
-          const eventEnd = new Date(`${fetchedEvent.endDate}T${fetchedEvent.endTime}`);
+          const eventStart = new Date(`${fetchedEvent.startDate}T${fetchedEvent.
+            eventStartTime}`);
+          const eventEnd = new Date(`${fetchedEvent.endDate}T${fetchedEvent.eventEndTime}`);
           setIsEventLive(now >= eventStart && now <= eventEnd);
         } else {
           console.error("❌ No event found!");

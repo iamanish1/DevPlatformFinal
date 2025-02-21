@@ -39,7 +39,8 @@ const EventRegistrationSchema = new mongoose.Schema({
   confirmationEmailSent: { 
     type: Boolean, 
     default: false 
-  }
+  },
+  
 });
 
 // ✅ Ensure one user can register only once for the same event

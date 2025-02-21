@@ -33,6 +33,20 @@ const SpeedGuidnaceSchema = new mongoose.Schema({
     },
     default: 0,
   },
+  eventStartTime: {
+    type: String,
+    reuired: true,
+  },
+
+  eventEndTime: {
+    type: String,
+    required: true,
+  },
+  eventStatus: {
+    type: String,
+    enum: ["Upcoming", "Live", "Ended"],
+    default: "Upcoming",
+  },
 });
 
 const SpeedGudiance = mongoose.model("SpeedGudiance", SpeedGuidnaceSchema);

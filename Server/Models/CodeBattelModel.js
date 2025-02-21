@@ -26,7 +26,30 @@ const CodeBattelSchema =  new mongoose.Schema({
     problemCoding: { type: String, required: true },
     problemDescription: { type: String, required: true },
     hostedBy: { type: mongoose.Schema.Types.ObjectId, ref: "AuthUser", required: true },
+    eventStartTime: {
+      type: String,
+      reuired: true,
+    },
+  
+    eventEndTime: {
+      type: String,
+      required: true,
+    },
+    eventStatus: {
+      type: String,
+      enum: ["Upcoming", "Live", "Ended"],
+      default: "Upcoming",
+    },
+    startDate: {
+      type: Date,
+      required: true,
+    },
+    endDate: {
+      type: Date,
+      required: true,
+    },
 })
+
 
 const CodeBattel = mongoose.model("CodeBattel", CodeBattelSchema);  // Exporting the schema for use in other parts of the application.  (e.g., routes, controllers, etc.)
 

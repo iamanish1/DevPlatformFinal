@@ -32,6 +32,20 @@ const QuizSchema = new mongoose.Schema({
     ],
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
+    eventStartTime: {
+      type: String,
+      reuired: true,
+    },
+  
+    eventEndTime: {
+      type: String,
+      required: true,
+    },
+    eventStatus: {
+      type: String,
+      enum: ["Upcoming", "Live", "Ended"],
+      default: "Upcoming",
+    },
 });
 
 const Quiz = mongoose.model('Quiz', QuizSchema);
