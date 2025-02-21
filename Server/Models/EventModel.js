@@ -54,11 +54,11 @@ const EventSchema = new mongoose.Schema({
     required: false,
     default: 0,
   },
-  maxParticipants: { 
-    type: Number, 
-    required: true,  // Users must define this when creating an event
-    min: 1,  // Ensure at least 1 participant is allowed
-    max: 10000,  // Adjusted the maximum value to 10,000 participants
+  maxParticipants: {
+    type: Number,
+    required: true, // Users must define this when creating an event
+    min: 1, // Ensure at least 1 participant is allowed
+    max: 10000, // Adjusted the maximum value to 10,000 participants
   },
   eventRules: {
     type: [
@@ -302,14 +302,19 @@ const EventSchema = new mongoose.Schema({
     },
   },
 
-  eventStartTime : {
-    type : String,
-    reuired : true , 
+  eventStartTime: {
+    type: String,
+    reuired: true,
   },
 
   eventEndTime: {
-   type : String, 
-    required : true ,
+    type: String,
+    required: true,
+  },
+  eventStatus: {
+    type: String,
+    enum: ["Upcoming", "Live", "Ended"],
+    default: "Upcoming",
   },
 });
 

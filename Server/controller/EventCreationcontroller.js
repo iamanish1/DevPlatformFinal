@@ -92,6 +92,7 @@ const EventCreation = async (req, res, Model, eventType) => {
       maxParticipants : req.body.maxParticipants ,
       eventStartTime : req.body.eventStartTime ,
       eventEndTime : req.body.eventEndTime ,
+      eventStatus : req.body.eventStatus ,
 
     });
 
