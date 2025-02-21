@@ -6,6 +6,6 @@ const  RegisterRoutes = express.Router() ;
 
 RegisterRoutes.post("/register", authenticateUser ,RegisterForEvent) 
 RegisterRoutes.delete("/cancel/:eventId", authenticateUser, CancelEventRegistration) 
-RegisterRoutes.get("/participants/:eventId", authenticateUser ,GetParticipantRegistrationData )
+RegisterRoutes.get("/participants/:eventId",GetParticipantRegistrationData )
 
 export default RegisterRoutes;  // Exporting the router for the registration routes.

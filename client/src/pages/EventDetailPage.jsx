@@ -5,55 +5,107 @@ import { Link } from "react-router-dom";
 
 
 const EventDetail = () => {
-  const { refrenceId } = useParams(); // Extract ID from URL
-  const {id} = useParams(); // Extract ID from URL
-  const [event, setEvent] = useState(null);
-  const [loading, setLoading] = useState(true);
+const { refrenceId } = useParams(); // Fetch from URL
+const [event, setEvent] = useState(null);
+const [eventId, setEventId] = useState(null); // Store correct _id
+const [loading, setLoading] = useState(true);
+const [isEventLive, setIsEventLive] = useState(false);
+const [isUserRegistered, setIsUserRegistered] = useState(false);
 
   useEffect(() => {
-    console.log("🔹 URL ID:", refrenceId); // Debugging ID
     if (!refrenceId) {
       console.error("❌ Event ID is missing from URL!");
       setLoading(false);
       return;
     }
-
+  
     const fetchEvent = async () => {
       try {
-        console.log("🔄 Fetching event...");
         const response = await axios.get(
           `http://localhost:8000/api/getEvent/general/specific/${refrenceId}`
         );
-
-        console.log("✅ Event Data Fetched:", response.data);
+  
         if (response.data.event) {
-          setEvent(response.data.event);
+          const fetchedEvent = response.data.event;
+          setEvent(fetchedEvent);
+          setEventId(fetchedEvent._id); // Store the correct _id
+  
+          // Check if the event is live
+          const now = new Date();
+          const eventStart = new Date(`${fetchedEvent.startDate}T${fetchedEvent.startTime}`);
+          const eventEnd = new Date(`${fetchedEvent.endDate}T${fetchedEvent.endTime}`);
+          setIsEventLive(now >= eventStart && now <= eventEnd);
         } else {
-          console.error("❌ No event found in response!");
+          console.error("❌ No event found!");
         }
       } catch (error) {
-        console.error(
-          "❌ Error fetching event:",
-          error.response?.data || error.message
-        );
+        console.error("❌ Error fetching event:", error.message);
       } finally {
-        console.log("⏹ Setting loading to false...");
-        setLoading(false); // Make sure this runs
+        setLoading(false);
       }
     };
-
+  
     fetchEvent();
   }, [refrenceId]);
-
-  if (loading) {
-    console.log("⏳ Loading event...");
-    return <p>Loading...</p>;
-  }
-
-  if (!event) {
-    console.log("❌ Event not found!");
-    return <p>Event not found!</p>;
-  }
+  
+  useEffect(() => {
+    if (!eventId) return; // Only run if we have a valid _id
+     
+    const checkUserRegistration = async () => {
+      try {
+        const authToken = localStorage.getItem("authToken"); // Fetch auth token
+        if (!authToken) {
+          console.warn("⚠ No authentication token found.");
+          return;
+        }
+    
+        // Step 1: Fetch authenticated user details
+        const userResponse = await axios.get("http://localhost:8000/api/authuser", {
+          headers: { Authorization: `Bearer ${authToken}` }, // Pass token in headers
+        });
+    
+        const userId = userResponse.data.user._id; // Get logged-in user's ID
+        console.log("✅ Authenticated User ID:", userId);
+    
+        // Step 2: Fetch event participants
+        const response = await axios.get(
+          `http://localhost:8000/api/registrationEvent/participants/${eventId}`
+        );
+    
+        console.log("📌 Event Participants Response:", response);
+    
+        const registrations = response.data.registrations || []; // Get registrations array
+        console.log("📌 Registered Users:", registrations);
+    
+        if (registrations.length === 0) {
+          console.warn("⚠ No participants registered for this event.");
+          return;
+        }
+    
+        // Extract all user IDs from registrations
+        const registeredUserIds = registrations.map((reg) => reg.userId);
+    
+        // Check if the logged-in user is registered
+        setIsUserRegistered(registeredUserIds.includes(userId));
+      } catch (error) {
+        console.error("❌ Error checking registration status:", error.message);
+      }
+    };
+    checkUserRegistration();
+  
+  }, [eventId]); // Run when `eventId` is set
+  if (loading) return <p>Loading...</p>;
+  if (!event) return <p>Event not found!</p>;
+  
+  const renderButton = () => {
+    if (!isUserRegistered) {
+      return <button>Register Now</button>;
+    } else if (!isEventLive) {
+      return <button disabled>You have registered!</button>;
+    } else {
+      return <button>Participate</button>;
+    }
+  };
 
   const formattedstartDate = new Date(event.startDate).toLocaleDateString("en-US", {
     year: "numeric",
@@ -95,7 +147,7 @@ const EventDetail = () => {
       </div>
       <Link to={`/participate/${refrenceId}`}>
         <button className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300">
-          Register Now
+        {renderButton()}
         </button>
       </Link>
 

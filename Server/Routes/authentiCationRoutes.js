@@ -10,6 +10,8 @@ import {
     createSpeedGuidanceEvent,
     createQuizEvent,
 } from "../controller/EventCreationcontroller.js";
+import getauthUserDetail from "../controller/GetauthUserDetailController.js";
+import authenticateUser from "../Middleware/AuthMidellware.js";
 
 
 
@@ -24,6 +26,7 @@ Routes.post("/create/debugging_duel", createDebuggingDuelEvent);
 Routes.post("/create/code_battle", createCodeBattleEvent);
 Routes.post("/create/speed_guidance", createSpeedGuidanceEvent);
 Routes.post("/create/quiz", createQuizEvent);
+Routes.get("/authuser", authenticateUser,getauthUserDetail);
 
 
 
