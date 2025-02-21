@@ -103,6 +103,18 @@ export const getEventById = async (req, res) => {
         statusCode: 404,
       });
     }
+    
+    const currentTime = new Date();
+    const eventStartTime = new Date(`${event.startDate}T${event.startTime}`);
+    const eventEndTime = new Date(`${event.endDate}T${event.endTime}`);
+
+    let eventStatus = "Upcoming"; // Default status
+
+    if (currentTime >= eventStartTime && currentTime <= eventEndTime) {
+      eventStatus = "Live";
+    } else if (currentTime > eventEndTime) {
+      eventStatus = "Completed";
+    }
 
     return res.status(200).json({
       message: "Fetched event successfully",

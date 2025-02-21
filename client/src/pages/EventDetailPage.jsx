@@ -11,6 +11,7 @@ const [eventId, setEventId] = useState(null); // Store correct _id
 const [loading, setLoading] = useState(true);
 const [isEventLive, setIsEventLive] = useState(false);
 const [isUserRegistered, setIsUserRegistered] = useState(false);
+const [eventStatus, setEventStatus] = useState("Upcoming");
 
   useEffect(() => {
     if (!refrenceId) {
@@ -27,6 +28,8 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
   
         if (response.data.event) {
           const fetchedEvent = response.data.event;
+          const fetcheventstatus = response.data.eventStatus ;
+          setEventStatus(fetcheventstatus);
           setEvent(fetchedEvent);
           setEventId(fetchedEvent._id); // Store the correct _id
         console.log("this is my event data after regiestration", response.data)
