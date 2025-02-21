@@ -301,6 +301,16 @@ const EventSchema = new mongoose.Schema({
       );
     },
   },
+
+  eventStartTime : {
+    type : String,
+    reuired : true , 
+  },
+
+  eventEndTime: {
+   type : String, 
+    required : true ,
+  },
 });
 
 const Event = mongoose.model("Event", EventSchema);

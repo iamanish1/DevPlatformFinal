@@ -90,6 +90,9 @@ const EventCreation = async (req, res, Model, eventType) => {
       eventImage : req.body.eventImage , 
       hostedByName : req.body.hostedByName ,
       maxParticipants : req.body.maxParticipants ,
+      eventStartTime : req.body.eventStartTime ,
+      eventEndTime : req.body.eventEndTime ,
+
     });
 
     await event.save();

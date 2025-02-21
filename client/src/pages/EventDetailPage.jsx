@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const EventDetail = () => {
   const { refrenceId } = useParams(); // Extract ID from URL
-  const {id} = useParams(); // Extract ID from URL
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
 
