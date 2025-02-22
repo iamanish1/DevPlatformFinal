@@ -11,6 +11,21 @@ const [eventId, setEventId] = useState(null); // Store correct _id
 const [loading, setLoading] = useState(true);
 const [isEventLive, setIsEventLive] = useState(false);
 const [isUserRegistered, setIsUserRegistered] = useState(false);
+const [eventStatus, setEventStatus] = useState(false);
+//  For Checing event is live or not 
+const getEventStatus = (event) => {
+  if (!event || !event.startDate || !event.startTime || !event.endDate || !event.endTime) {
+    return "unknown"; // Handle missing data
+  }
+
+  const now = new Date();
+  const eventStart = new Date(`${event.startDate}T${event.startTime}`);
+  const eventEnd = new Date(`${event.endDate}T${event.endTime}`);
+
+  if (now >= eventStart && now <= eventEnd) return "live";
+  if (now > eventEnd) return "ended";
+  return "upcoming";
+};
 
   useEffect(() => {
     if (!refrenceId) {
@@ -27,18 +42,14 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
   
         if (response.data.event) {
           const fetchedEvent = response.data.event;
-          const fetcheventstatus = response.data.eventStatus ;
-          setEventStatus(fetcheventstatus);
           setEvent(fetchedEvent);
           setEventId(fetchedEvent._id); // Store the correct _id
         console.log("this is my event data after regiestration", response.data)
   
-          // Check if the event is live
-          const now = new Date();
-          const eventStart = new Date(`${fetchedEvent.startDate}T${fetchedEvent.
-            eventStartTime}`);
-          const eventEnd = new Date(`${fetchedEvent.endDate}T${fetchedEvent.eventEndTime}`);
-          setIsEventLive(now >= eventStart && now <= eventEnd);
+        const eventStatus = getEventStatus(fetchEvent)
+        setIsEventLive(eventStatus === "live");
+        setEventStatus(eventStatus);
+
         } else {
           console.error("❌ No event found!");
         }
@@ -77,6 +88,8 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
         );
     
         console.log("📌 Event Participants Response:", response);
+
+
     
         const registrations = response.data.registrations || []; // Get registrations array
         console.log("📌 Registered Users:", registrations);
@@ -85,6 +98,7 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
           console.warn("⚠ No participants registered for this event.");
           return;
         }
+
     
         // Extract all user IDs from registrations
         const registeredUserIds = registrations.map((reg) => reg.userId);
@@ -107,9 +121,11 @@ const [isUserRegistered, setIsUserRegistered] = useState(false);
       className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
       >Register Now</button>;
     } else if (!isEventLive) {
-      return <button disabled
+      return <button disabled={eventStatus !== "live"}
       className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
-      >You have registered!</button>;
+      >
+      {eventStatus === "live" ? "Join Event" : eventStatus === "ended" ? "Event Ended" : "Event Not Started"}
+    </button>
     } else {
       return <button 
       className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
