@@ -15,8 +15,6 @@ const NavBar2 = ({ currentPage }) => {
   const profileOptions = [
     { name: "My Profile", route: "/Profile" },
     { name: "Events", route: "/Events" },
-    { name: "Mentorship", route: "/mentorship" },
-    { name: "Developer Market", route: "/DeveloperMarket" },
     { name: "Community", route: "/Community" },
     { name: "Logout", route: "/" },
   ];

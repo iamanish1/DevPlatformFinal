@@ -34,18 +34,6 @@ const NavBar = () => {
             Events
           </Link>
           <Link
-            to="/mentorship"
-            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
-          >
-            Mentorship
-          </Link>
-          <Link
-            to="/DeveloperMarket"
-            className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
-          >
-            Developer-Market
-          </Link>
-          <Link
             to="Community"
             className="text-sm font-poppins md:text-base hover:text-[#4C1A76]"
           >
