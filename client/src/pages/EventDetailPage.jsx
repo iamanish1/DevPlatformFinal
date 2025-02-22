@@ -53,9 +53,12 @@ const EventDetail = () => {
       console.error("❌ Invalid event start or end date");
       return "unknown";
     }
+    const oneHourBeforeStart = new Date(eventStart.getTime() - 60 * 60 * 1000);
   
+    if (now >= eventEnd) return "ended";
     if (now >= eventStart && now <= eventEnd) return "live";
-    if (now > eventEnd) return "ended";
+    if (now >= oneHourBeforeStart && now < eventStart) return "soon";
+  
     return "upcoming";
   };
 
@@ -172,9 +175,12 @@ const EventDetail = () => {
       );
     } else {
       return (
-        <button className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300">
+         <Link to="/eventparticipate">
+         <button className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300">
           Participate
         </button>
+         </Link>
+      
       );
     }
   };
@@ -380,4 +386,4 @@ const HackathonDetail = () => {
   );
 };
 
-export default EventDetail;
+export default EventDetail
