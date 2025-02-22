@@ -11,7 +11,6 @@ const [eventId, setEventId] = useState(null); // Store correct _id
 const [loading, setLoading] = useState(true);
 const [isEventLive, setIsEventLive] = useState(false);
 const [isUserRegistered, setIsUserRegistered] = useState(false);
-const [eventStatus, setEventStatus] = useState("Upcoming");
 
   useEffect(() => {
     if (!refrenceId) {
@@ -104,11 +103,17 @@ const [eventStatus, setEventStatus] = useState("Upcoming");
   
   const renderButton = () => {
     if (!isUserRegistered) {
-      return <button>Register Now</button>;
+      return <button
+      className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
+      >Register Now</button>;
     } else if (!isEventLive) {
-      return <button disabled>You have registered!</button>;
+      return <button disabled
+      className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
+      >You have registered!</button>;
     } else {
-      return <button>Participate</button>;
+      return <button 
+      className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300"
+      >Participate</button>;
     }
   };
 
@@ -151,9 +156,9 @@ const [eventStatus, setEventStatus] = useState("Upcoming");
         </p>
       </div>
       <Link to={`/participate/${refrenceId}`}>
-        <button className="mt-6 px-[10vmin] py-[2vmin] bg-[#4C1A76] text-white font-semibold text-[2.5vmin] rounded-[4vmin] shadow-md hover:bg-[#3A125D] transition duration-300">
-        {renderButton()}
-        </button>
+       
+      {renderButton()}
+       
       </Link>
 
       {/* Category Tags */}
