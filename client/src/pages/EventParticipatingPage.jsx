@@ -4,109 +4,66 @@ import { FaRegClock } from "react-icons/fa";
 
 const EventParticipatingPage = () => {
   return (
-    <>
-      <div className="min-h-screen w-full">
-        {/* EVENT Participant Page NAV BAR */}
-        <div>
-          <div className="h-[10vmin] w-full bg-white shadow-sm flex justify-between">
-            {/* EVent Title  */}
-            <div className="flex justify-center items-center">
-              <h1 className="text-[3vmin] font-bold text-[#4C1A76] ml-[5vmin]">
-                BugHunt Arena
-              </h1>
-            </div>
+    <div className="min-h-screen w-full bg-gray-100">
+      {/* Event Participant Page Navbar */}
+      <nav className="h-[10vmin] w-full bg-white shadow-sm flex justify-between px-6 items-center">
+        <h1 className="text-[3vmin] font-bold text-[#4C1A76]">BugHunt Arena</h1>
+        <div className="flex gap-4">
+          <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
+            <FaRegClock /> Leader Board
+          </button>
+          <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
+            Leader Board <MdLeaderboard />
+          </button>
+        </div>
+      </nav>
 
-            <div className="flex justify-center items-center gap-[5vmin]">
-              <div>
-                <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
-                  <FaRegClock />
-                  Leader Board
-                </button>
-              </div>
-              <div>
-                <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2 mr-[3vmin]">
-                  Leader Board
-                  <MdLeaderboard />
-                </button>
-              </div>
-            </div>
+      {/* Event Participants Section with Split Panel */}
+      <Split
+        className="flex mt-4 h-[calc(100vh-10vmin)]"
+        sizes={[40, 60]}
+        minSize={200}
+        gutterSize={8}
+      >
+        {/* Problem Description Section */}
+        <div className="w-full bg-white p-6 overflow-auto">
+          <h1 className="text-[3vmin] font-bold text-[#4C1A76]">Problem:</h1>
+          <p className="text-[2.5vmin] mt-2">
+            Unauthorized users can access admin pages by modifying the URL after logging in, bypassing role-based authentication. 🚨
+          </p>
+
+          <h1 className="text-[3vmin] font-bold text-[#4C1A76] mt-6">Description:</h1>
+          <p className="text-[2.5vmin] mt-2">
+            A critical security vulnerability has been identified in the login mechanism of the web application. By manipulating the
+            URL after login, unauthorized users can gain access to restricted admin pages without proper authentication.
+          </p>
+
+          <h1 className="text-[3vmin] font-bold text-[#4C1A76] mt-6">Image:</h1>
+          <div className="bg-slate-300 h-[30vmin] w-[70vmin] flex items-center justify-center mt-2">
+            <img src="https://via.placeholder.com/150" alt="Bug example screenshot" className="w-full h-full object-cover" />
+          </div>
+
+          <h1 className="text-[3vmin] font-bold text-[#4C1A76] mt-6 mb-[3vmin]">Video:</h1>
+          <div className="bg-slate-300 h-[30vmin] w-[70vmin] flex items-center justify-center mt-2">
+            <video width="100%" height="100%" controls>
+              <source src="https://via.placeholder.com/150" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
-        {/* EVENT Participants section with Split Panel */}
-        <Split
-          className="flex justify-between mt-[2vmin] h-[calc(100vh-8vmin)]"
-          sizes={[40, 60]} // Initial widths (40% Participants, 60% Compiler)
-          minSize={200} // Minimum size for each section
-          gutterSize={8} // Thickness of the draggable divider
-        >
-          {/* Participants Section */}
-          <div className=" w-full bg-white flex flex-col">
-            <div className="ml-[1vmin] flex flex-col">
-              <div>
-                <h1 className="text-[3vmin] font-bold text-[#4C1A76] ml-[1vmin] mt-[3vmin]">
-                  Problem :{" "}
-                </h1>
-              </div>
-              <div className="ml-[1vmin] mt-[1.5vmin]">
-                <p className="text-[2.8vmin] font-poppins">
-                  Unauthorized users can access admin pages by modifying the URL
-                  after logging in, bypassing role-based authentication. 🚨
-                </p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <h1>Description</h1>
-              </div>
-              <div>
-                <p>Here the description about problem </p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <h1>Image</h1>
-              </div>
-              <div>
-                <img src="https://via.placeholder.com/150" alt="Placeholder" />
-              </div>
-            </div>
-            <div>
-              <div>
-                <h1>Video</h1>
-              </div>
-              <div>
-                <video width="320" height="240" controls>
-                  <source
-                    src="https://via.placeholder.com/150"
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            </div>
+        {/* Compiler Section */}
+        <Split direction="vertical" className="h-full w-full" sizes={[90, 10]} minSize={50} gutterSize={8}>
+          {/* Code Editor */}
+          <div className="h-full w-full bg-black"></div>
+
+          {/* Console Output */}
+          <div className="h-[20vmin] w-full bg-[#161B22] p-4">
+            <h2 className="text-white text-[2.5vmin] font-bold uppercase">Console Output:</h2>
           </div>
-
-          {/* Compiler Section */}
-          <Split
-            direction="vertical"
-            className="h-full w-full flex flex-col"
-            sizes={[90, 10]} // Initial heights (90% Code Editor, 10% Console)
-            minSize={50}
-            gutterSize={8}
-          >
-            {/* Code Editor */}
-            <div className="h-[90vmin] w-full bg-black"></div>
-
-            {/* Console Output */}
-            <div className="h-[20vmin] w-full bg-[#161B22]">
-              <div className="text-white text-[3vmin] font-bold ml-[2vmin] mt-[2vmin] uppercase">
-                Console Output :{" "}
-              </div>
-            </div>
-          </Split>
         </Split>
-      </div>
-    </>
+      </Split>
+    </div>
   );
 };
 
