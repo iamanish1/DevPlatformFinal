@@ -28,3 +28,5 @@ const runCodeonjudge0 = async (code , languageId, expectedOutput) =>{
         throw new Error("Failed to execute code.");
     }
 }
+
+export default runCodeonjudge0;
