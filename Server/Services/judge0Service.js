@@ -6,13 +6,13 @@ console.log("judge0 api :" , judge0_api);
 const judge0_api_key = process.env.judge0_api_key
 console.log("judge0 api key :" , judge0_api_key);
 
-const runCodeonjudge0 = async (code , languageId, expectedOutput) =>{
+const runCodeonjudge0 = async (code , language_Id, expectedOutput) =>{
     try {
         const submissionResponse = await axios.post(
             judge0_api,
             {
                 code,
-                language_id: languageId,
+                language_id: language_Id,
                 expected_output: expectedOutput
             },
             {
