@@ -35,6 +35,17 @@ const ParticipationSchema = new mongoose.Schema({
         default : Date.now,
         index : true,
     },
+    problemStatement : {
+        type : String,
+        required : true,
+    },
+    code: {
+        type : String,
+        required : true,
+    },
+    language_id : {
+        type :Number , 
+    },
     submissions: [
         {
             type: mongoose.Schema.Types.ObjectId,
