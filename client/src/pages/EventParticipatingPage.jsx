@@ -1,13 +1,17 @@
 import Split from "react-split";
 import { MdLeaderboard } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
+import { FaInfo } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const EventParticipatingPage = () => {
   return (
     <div className="min-h-screen w-full bg-gray-100">
       {/* Event Participant Page Navbar */}
       <nav className="h-[10vmin] w-full bg-white shadow-sm flex justify-between px-6 items-center">
+        <Link to="/events/:refrenceId">
         <h1 className="text-[3vmin] font-bold text-[#4C1A76]">BugHunt Arena</h1>
+        </Link>
         <div className="flex gap-4">
           <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
             <FaRegClock /> Leader Board
@@ -15,6 +19,14 @@ const EventParticipatingPage = () => {
           <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
             Leader Board <MdLeaderboard />
           </button>
+          <Link to="/eventinfromation"
+          className="flex items-center"
+          >
+          <button className="bg-[#4C1A76] text-white py-2 px-5 border rounded-full hover:bg-[#F76C21] flex items-center gap-2">
+          <FaInfo />
+          </button>
+          </Link>
+         
         </div>
       </nav>
 

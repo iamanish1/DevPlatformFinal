@@ -19,6 +19,7 @@ import MentorshipPage from "../pages/Mentorship";
 import FinalRegistrationPage from "../pages/SubEventRegistrationPage";
 import EventDetailPage from "../pages/EventDetailPage";
 import EventParticipatingPage from "../pages/EventParticipatingPage";
+import EventDetailinformationPage from "../pages/EventInfromationPage";
 
 const AppRoutes = () => {
     const isAuthenticated = useContext(AuthContext); 
@@ -39,6 +40,7 @@ const AppRoutes = () => {
         <Route path="/mentorship" element={<MentorshipPage/>} />
         <Route path="/participate/:refrenceId" element={<FinalRegistrationPage/>} />
         <Route path="/eventparticipate" element={<EventParticipatingPage/>} />
+        <Route path="/eventinfromation" element={<EventDetailinformationPage/>}/>
 
         </Route>
         <Route path="/" element={<HomePage/>} />
